@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+.isologotipo{
+    width: 30%;
+    min-width: 50px;
+    max-width: 70px;
+}
+.isologoTexto{
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+aside{
+    height: 100vh;
+    background-color: #0E3A81;
+}
+.carousel-item img{
+    height: 300px;
+
+}
+main h1{
+    color: #0E3A81;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:200%;
+}
+main p{
+    font-size: 18px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+} 
+/*Cards*/
+.info .card{
+    background-color: #0c449e;
+}
+.info .card .card-body .card-title{
+    font-size: 24px;
+}
+.info .card, .servicio .card{
+    transition: all .5s ease; 
+}
+.info .card:hover, .servicio .card:hover{
+    transform: translateY(15px);
+}
+.servicio .card img, .info .card img{
+    height: 400px;
+}
+.servicio .card .card-img-overlay{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.478);
+    transition: all .5s ease;
+}
+.servicio .card .card-img-overlay .card-title{
+     font-size: 35px;
+}
+.servicio .card .card-img-overlay .card-text{
+    font-size: 16px;
+}
+.servicio .card .card-img-overlay{
+    opacity: 0;
+    
+}
+.servicio .card .card-img-overlay:hover{
+    opacity: 1;
+    
+}
+.registro{
+    background: linear-gradient(white,lightskyblue);
+   }
+   #hermanosSanosField, #enfermedadTipoField, #deporteMalestarField, #drogaAlergiaTipoField, #fiebreMedicacionField, #diabetesControlField, #cardiacoTipoField, #aspirinaFrecuenciaField, #chagasTratamientoField, #hepatitisTipoField, #hepaticoTipoField, #epilepticoMedicacionField, #infectoField, #operadoField, #respiratorioField, #embarazadaField, #recomendacionMedicaField, #medicamentoOdontoField, #dolorField, #dolorLocalizadoField, #dolorIrradiadoField, #golpeDienteField, #golpeDienteFracturaField, #sangreEnciasField, #pusField, #caraHinchadaField{
+       display: none;
+       transition: background-color 1s ease;
+   }
+   .highlight{
+       background-color:#0c449e;
+       color: white;
+   }
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/assets/images/fondo.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%; 
+}

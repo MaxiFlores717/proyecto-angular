@@ -1,32 +1,3 @@
-<button type="button" (click)="setEnabled()">
-  {{enabled?'ocultar': 'Mostrar'}}
-</button>
-<!-- 
-  <div *ngIf="enabled; else notEnabled">
-      <h2>Hola</h2>
-  </div>
-  <ng-template #notEnabled>
-
-      <h1>boca</h1>
-  </ng-template>
-
-<ul *ngIf="enabled">
-  <li *ngFor="let course of courses">{{course}}</li>
-</ul>
--->
-
-@if (enabled){
-  <h2>Hola</h2>
-  
-  <ul>
-  
-      @for (course of courses; track $index) {
-      <li>{{ course }}</li>
-      }
-  </ul>
-}
-@else {
-<h1>boca</h1>
-}
-<app-pacientes></app-pacientes>
-
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
