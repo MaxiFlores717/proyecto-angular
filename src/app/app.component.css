@@ -1,0 +1,25 @@
+body {
+    background-image: url('/assets/images/fondo.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%; 
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}

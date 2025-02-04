@@ -1,18 +1,4 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('/assets/fonts/Poppins-Regular.ttf') format('truetype');
-    font-weight: 400;
-}
 
-@font-face {
-    font-family: 'Poppins';
-    src: url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
-    font-weight: 600;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-}
 
 a {
     text-decoration: none;
@@ -26,10 +12,19 @@ a {
     font-size: 1.15rem;
     font-weight: 600;
 }
-aside{
-    height: 100vh;
-    background-color: #0E3A81;
+aside {
+    position: fixed; /* Fija el aside en la pantalla */
+    top: 0; /* Asegura que comience desde la parte superior */
+    left: 0; /* Pegado a la izquierda */
+    width: 16.6667%; /* Aproximadamente col-md-2 de Bootstrap */
+    min-width: 200px; /* Un ancho mínimo para asegurar legibilidad */
+    height: 100vh; /* Altura de toda la ventana */
+    background-color: #0E3A81; /* Color de fondo */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    padding: 0; /* Elimina cualquier padding innecesario */
+    margin: 0; /* Elimina márgenes no deseados */
 }
+
 .carousel-item img{
     height: 300px;
 
@@ -96,12 +91,3 @@ main p{
     box-sizing: border-box;
 }
 
-body {
-    background-image: url('/assets/images/fondo.jpg') !important;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%; 
-}

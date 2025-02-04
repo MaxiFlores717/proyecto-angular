@@ -4,11 +4,12 @@ import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { HomeComponent } from "./components/home/home.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent, FooterComponent , PacientesComponent, CommonModule],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, PacientesComponent, CommonModule, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
