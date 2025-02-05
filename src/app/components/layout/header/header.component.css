@@ -13,16 +13,8 @@ a {
     font-weight: 600;
 }
 aside {
-    position: fixed; /* Fija el aside en la pantalla */
-    top: 0; /* Asegura que comience desde la parte superior */
-    left: 0; /* Pegado a la izquierda */
-    width: 16.6667%; /* Aproximadamente col-md-2 de Bootstrap */
-    min-width: 200px; /* Un ancho mínimo para asegurar legibilidad */
-    height: 100vh; /* Altura de toda la ventana */
-    background-color: #0E3A81; /* Color de fondo */
-    z-index: 1000; /* Asegura que esté sobre otros elementos */
-    padding: 0; /* Elimina cualquier padding innecesario */
-    margin: 0; /* Elimina márgenes no deseados */
+    height: 100vh;
+    background-color: #0E3A81;
 }
 
 .carousel-item img{
