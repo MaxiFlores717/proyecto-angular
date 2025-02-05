@@ -1,6 +1,19 @@
+<div class="table-responsive p-4">
 @if (pacientes.length >0) {
-    <table>
-        <thead>
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <td colspan="8" class="title-table text-center p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Listado de Usuarios</span>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Buscar..."
+                                aria-label="Search">
+                        </form>
+                    </div>
+
+                </td>
+            </tr>
             <tr>
                 <th>id</th>
                 <th>name</th>
@@ -19,4 +32,5 @@
         </tbody>
     </table>
 }
+</div>
 

@@ -1,4 +1,4 @@
-  <a th:href="@{/index}">
+  <a routerLink="/home" [routerLinkActive]="'active'">
     <img class="isologotipo rounded-circle my-3" [src]="imageLogo" alt="">
   </a>
   <h3 class="isologoTexto">Equilibro Dental</h3>
@@ -15,15 +15,15 @@
         <div id="SubmenuPaciente" class="accordion-collapse collapse" data-bs-parent="#menu">
           <div class="accordion-body">
             <i class='bx bxs-user-plus mx-2'></i>
-            <a class="text-reset" href="/paciente/formPaciente">Registrar Paciente</a>
+            <a class="text-reset" routerLink="/formPaciente" [routerLinkActive]="'active'">Registrar Paciente</a>
           </div>
           <div class="accordion-body">
             <i class='bx bxs-user-detail mx-2'></i>
-            <a class="text-reset" href="/paciente/listarPacientes">Mostrar Pacientes</a>
+            <a class="text-reset" routerLink="/pacientes" [routerLinkActive]="'active'">Mostrar Pacientes</a>
           </div>
           <div class="accordion-body">
             <i class='bx bx-search-alt-2 mx-2'></i>
-            <a href="#" class="text-reset">Buscar Paciente</a>
+            <a routerLink="/informacionPacientes" [routerLinkActive]="'active'" class="text-reset">Buscar Paciente</a>
           </div>
         </div>
       </div>
