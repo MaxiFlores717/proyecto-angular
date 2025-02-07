@@ -1,0 +1,17 @@
+.registro{
+    background: linear-gradient(white,lightskyblue);
+   }
+   /* #hermanosSanosField{
+       display: none;
+       transition: background-color 1s ease;
+   } */
+    .fondo-azul{
+       background-color:#0c449e; 
+       color: white;
+       transition: background-color 1s ease-in-out;
+    }
+   
+    .sin-fondo{
+        background: transparent;
+        transition: background-color 1s ease-in-out;
+    }
