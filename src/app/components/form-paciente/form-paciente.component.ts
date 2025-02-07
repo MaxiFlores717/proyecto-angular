@@ -31,6 +31,12 @@ operado: string = '';
 respiratorio: string = '';
 embarazada: string = '';
 recomendacionMedica: string = '';
+medicacionOdonto: string = '';
+dolor: string = '';
+golpeDiente: string = '';
+encias: string = '';
+pus: string = '';
+caraHinchada: string = '';
 fondoAzulHermanos: boolean = false;
 fondoAzulEnfermedad: boolean = false;
 fondoAzulDeporte: boolean = false;
@@ -48,6 +54,12 @@ fondoAzulOperado: boolean = false;
 fondoAzulRespiratio: boolean = false;
 fondoAzulEmbarazada: boolean = false;
 fondoAzulRecomendacionMedica: boolean = false;
+fondoAzulMedicacionOdonto: boolean = false;
+fondoAzulDolor: boolean = false;
+fondoAzulGolpeDiente: boolean = false;
+fondoAzulEncias: boolean = false;
+fondoAzulPus: boolean = false;
+fondoAzulCaraHinchada: boolean = false;
 
 /*------------------------- Preguntas ----------------------------------------*/
 
@@ -293,6 +305,90 @@ mostrarPreguntaRecomendacionM() {
   }
   else if (this.recomendacionMedica === 'no'){
     this.fondoAzulRecomendacionMedica = false;
+  }
+}
+
+/*------------------------- Medicaciíon Odonto ----------------------------------------*/
+
+mostrarPreguntaMedicacionOdonto() {
+  if (this.medicacionOdonto === 'si') {
+    this.fondoAzulMedicacionOdonto = true;
+    setTimeout(() => {
+      this.fondoAzulMedicacionOdonto = false;
+    }, 800); // Desaparece después de 0.8 segundos
+  }
+  else if (this.medicacionOdonto === 'no'){
+    this.fondoAzulMedicacionOdonto = false;
+  }
+}
+
+/*------------------------- Dolor ----------------------------------------*/
+
+mostrarPreguntaDolor() {
+  if (this.dolor === 'si') {
+    this.fondoAzulDolor = true;
+    setTimeout(() => {
+      this.fondoAzulDolor = false;
+    }, 800); // Desaparece después de 0.8 segundos
+  }
+  else if (this.dolor === 'no'){
+    this.fondoAzulDolor = false;
+  }
+}
+
+/*------------------------- Golpe Diente ----------------------------------------*/
+
+mostrarPreguntaGolpeDiente() {
+  if (this.golpeDiente === 'si') {
+    this.fondoAzulGolpeDiente = true;
+    setTimeout(() => {
+      this.fondoAzulGolpeDiente = false;
+    }, 800); // Desaparece después de 0.8 segundos
+  }
+  else if (this.golpeDiente === 'no'){
+    this.fondoAzulGolpeDiente = false;
+  }
+}
+
+/*------------------------ Encias ----------------------------------------*/
+
+mostrarPreguntaEncias() {
+  if (this.encias === 'si') {
+    this.fondoAzulEncias = true;
+    setTimeout(() => {
+      this.fondoAzulEncias = false;
+    }, 800); // Desaparece después de 0.8 segundos
+  }
+  else if (this.encias === 'no'){
+    this.fondoAzulEncias = false;
+  }
+}
+
+/*------------------------ Pus ----------------------------------------*/
+
+mostrarPreguntaPus() {
+  if (this.pus === 'si') {
+    this.fondoAzulPus = true;
+    setTimeout(() => {
+      this.fondoAzulPus = false;
+    }, 800); // Desaparece después de 0.8 segundos
+  }
+  else if (this.pus === 'no'){
+    this.fondoAzulPus = false;
+  }
+}
+
+/*------------------------ Cara Hinchada ----------------------------------------*/
+
+mostrarPreguntaCaraHinchada() {
+  if (this.caraHinchada === 'si') {
+    this.fondoAzulCaraHinchada = true;
+    setTimeout(() => {
+      this.fondoAzulCaraHinchada = false;
+    }, 800); // Desaparece después de 0.8 segundos
+  }
+  else if (this.caraHinchada === 'no'){
+    this.fondoAzulCaraHinchada = false;
   }
 }
 

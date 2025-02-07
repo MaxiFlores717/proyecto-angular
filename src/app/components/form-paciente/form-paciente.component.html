@@ -630,12 +630,12 @@
                         <label class="me-3">Toma algún medicamento?:</label>
                         <label for="medicamentoOdontoSi">Si</label>
                         <input class="form-check-input" type="radio" name="medicamentoOdonto"
-                            id="medicamentoOdontoSi">
+                           id="medicamentoOdontoSi"  [(ngModel)]="medicacionOdonto" (ngModelChange)="mostrarPreguntaMedicacionOdonto()" value="si">
                         <label for="medicamentoOdontoNo">No</label>
                         <input class="form-check-input" type="radio" name="medicamentoOdonto"
-                            id="medicamentoOdontoNo">
+                            id="medicamentoOdontoNo"  [(ngModel)]="medicacionOdonto" (ngModelChange)="mostrarPreguntaMedicacionOdonto()" value="no">
                     </div>
-                    <div id="medicamentoOdontoField">
+                    <div *ngIf="medicacionOdonto === 'si'" [ngClass]="{'fondo-azul': fondoAzulMedicacionOdonto, 'sin-fondo': !fondoAzulMedicacionOdonto}">
                     <div class="row mt-3">
                     <div class="form-group col-md-6 p-4">
                         <label for="nombreMedicamento" class="col col-form-label">Nombre de los medicamentos: </label>
@@ -659,17 +659,18 @@
                             id="medicamentoResultadosNo">
                     </div>
                     </div>
+                    <hr>
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Ha tenido dolor?:</label>
                         <label for="dolorSi">Si</label>
                         <input class="form-check-input" type="radio" name="dolor"
-                            id="dolorSi">
+                            id="dolorSi" [(ngModel)]="dolor" (ngModelChange)="mostrarPreguntaDolor()" value="si">
                         <label for="dolorNo">No</label>
                         <input class="form-check-input" type="radio" name="dolor"
-                            id="dolorNo">
+                            id="dolorNo" [(ngModel)]="dolor" (ngModelChange)="mostrarPreguntaDolor()" value="no">
                     </div>
-                    <div id="dolorField">
+                    <div *ngIf="dolor === 'si'" [ngClass]="{'fondo-azul': fondoAzulDolor, 'sin-fondo': !fondoAzulDolor}">
                         <div class="row mt-3">
                             <div class="form-ckeck col-md-6 p-4">
                                 <label class="me-3">De qué tipo?:</label>
@@ -737,17 +738,18 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Sufrió algún golpe en los dientes?:</label>
                         <label for="golpeDienteSi">Si</label>
                         <input class="form-check-input" type="radio" name="golpeDiente"
-                            id="golpeDienteSi">
+                            id="golpeDienteSi" [(ngModel)]="golpeDiente" (ngModelChange)="mostrarPreguntaGolpeDiente()" value="si">
                         <label for="golpeDienteNo">No</label>
                         <input class="form-check-input" type="radio" name="golpeDiente"
-                            id="golpeDienteNo">
+                            id="golpeDienteNo" [(ngModel)]="golpeDiente" (ngModelChange)="mostrarPreguntaGolpeDiente()" value="no">
                     </div>
-                    <div id="golpeDienteField">
+                    <div *ngIf="golpeDiente === 'si'" [ngClass]="{'fondo-azul': fondoAzulGolpeDiente, 'sin-fondo': !fondoAzulGolpeDiente}">
                         <div class="row mt-3">
                             <div class="form-group col-md-6 p-4">
                                 <label for="golpeDienteTiempo" class="col col-form-label">Cuándo?: </label>
@@ -787,6 +789,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene Dificultad Para:</label>
@@ -826,7 +829,7 @@
                                 <label for="dificultadTragarNo">No</label>
                                 <input class="form-check-input" type="radio" name="dificultadTragar"
                                     id="dificultadTragarNo">
-                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
@@ -957,12 +960,12 @@
                         <label class="me-3">Le sangran las encias?</label>
                         <label for="sangreEnciasSi">Si</label>
                         <input class="form-check-input" type="radio" name="sangreEncias"
-                            id="sangreEnciasSi">
+                            id="sangreEnciasSi" [(ngModel)]="encias" (ngModelChange)="mostrarPreguntaEncias()" value="si">
                         <label for="sangreEnciasNo">No</label>
                         <input class="form-check-input" type="radio" name="sangreEncias"
-                            id="sangreEnciasNo">
+                            id="sangreEnciasNo" [(ngModel)]="encias" (ngModelChange)="mostrarPreguntaEncias()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" id="sangreEnciasField">
+                    <div class="form-group col-md-12 p-4" *ngIf="encias === 'si'" [ngClass]="{'fondo-azul': fondoAzulEncias, 'sin-fondo': !fondoAzulEncias}">
                         <label for="sangreEnciasCuando" class="col col-form-label">Cuándo?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="sangreEnciasCuando">
@@ -972,12 +975,12 @@
                         <label class="me-3">Sale pus en algún lugar de su boca?</label>
                         <label for="pusSi">Si</label>
                         <input class="form-check-input" type="radio" name="pus"
-                            id="pusSi">
+                            id="pusSi" [(ngModel)]="pus" (ngModelChange)="mostrarPreguntaPus()" value="si">
                         <label for="pusNo">No</label>
                         <input class="form-check-input" type="radio" name="pus"
-                            id="pusNo">
+                            id="pusNo" [(ngModel)]="pus" (ngModelChange)="mostrarPreguntaPus()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" id="pusField">
+                    <div class="form-group col-md-12 p-4" *ngIf="pus === 'si'" [ngClass]="{'fondo-azul': fondoAzulPus, 'sin-fondo': !fondoAzulPus}">
                         <label for="pusLugar" class="col col-form-label">De donde?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="pusLugar">
@@ -1005,12 +1008,12 @@
                         <label class="me-3">Ha tenido la cara hinchada?</label>
                         <label for="caraHinchadaSi">Si</label>
                         <input class="form-check-input" type="radio" name="caraHinchada"
-                            id="caraHinchadaSi">
+                            id="caraHinchadaSi" [(ngModel)]="caraHinchada" (ngModelChange)="mostrarPreguntaCaraHinchada()" value="si">
                         <label for="caraHinchadaNo">No</label>
                         <input class="form-check-input" type="radio" name="caraHinchada"
-                            id="caraHinchadaNo">
+                            id="caraHinchadaNo" [(ngModel)]="caraHinchada" (ngModelChange)="mostrarPreguntaCaraHinchada()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" id="caraHinchadaField">
+                    <div class="form-group col-md-12 p-4" *ngIf="caraHinchada === 'si'" [ngClass]="{'fondo-azul': fondoAzulCaraHinchada, 'sin-fondo': !fondoAzulCaraHinchada}">
                         <label for="caraHinchadaTratam" class="col col-form-label">Se puso hielo, calor u otros?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="caraHinchadaTratam">
