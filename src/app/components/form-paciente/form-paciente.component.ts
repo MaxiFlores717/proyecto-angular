@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import * as bootstrap from 'bootstrap';
+declare var $: any;
 
 @Component({
   selector: 'app-form-paciente',
@@ -9,9 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './form-paciente.component.html',
   styleUrl: './form-paciente.component.css'
 })
-export class FormPacienteComponent {
-
-  constructor(private renderer: Renderer2) {}
+export class FormPacienteComponent implements AfterViewInit{
 
  /*------------------------- Variables ----------------------------------------*/
 tieneHermanos: string = '';
@@ -392,4 +392,28 @@ mostrarPreguntaCaraHinchada() {
   }
 }
 
+ngAfterViewInit() {
+  // Verificar que jQuery esté disponible
+  if (typeof $ !== 'undefined') {
+    console.log('jQuery versión:', $.fn.jquery);
+  } else {
+    console.error('jQuery no está definido');
+  }
+}
+
+initTabs() {
+  // Agregar tu lógica de inicialización de pestañas aquí si es necesario
+}
+
+nextTab(tabId: string) {
+  const tabTrigger = document.querySelector(`[data-bs-target="${tabId}"]`);
+    const tabContent = document.querySelector(tabId);
+    if (tabTrigger && tabContent) {
+      const tab = new bootstrap.Tab(tabTrigger);
+      tab.show();
+      tabContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      console.error('Elemento no encontrado:', tabId);
+    }
+}
 }

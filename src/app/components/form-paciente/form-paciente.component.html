@@ -86,7 +86,7 @@
 
 
                     <div class="text-center">
-                        <input type="submit" id="guardar" th:value="${botonGuardar}"
+                        <input type="button" id="siguiente" value="Siguiente" (click)="nextTab('#imagenes')"
                             class="btn btn-primary" />
                     </div>
                 </div>
@@ -106,8 +106,9 @@
                         </select>
                     </div>
                     <div class="text-center mt-3">
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#imagenes')" class="btn btn-secondary" />
                         <input type="button" id="siguiente" value="Siguiente"
-                            onclick="nextTab('#declaracionJurada')" class="btn btn-primary" />
+                        (click)="nextTab('#declaracionJurada')" class="btn btn-primary" />
                          </div>
                 </div>
             </div>
@@ -153,8 +154,9 @@
                             </div>
                     </div>
                     <div class="text-center mt-3">
+                    <input type="button" id="anterior" value="Anterior" (click)="nextTab('#datosPersonales')" class="btn btn-secondary" />
                     <input type="button" id="siguiente" value="Siguiente"
-                        onclick="nextTab('#obraSocial')" class="btn btn-primary" />
+                    (click)="nextTab('#obraSocial')" class="btn btn-primary" />
                      </div>
                 </div>
                 
@@ -604,8 +606,9 @@
                         </div>
                     </div>
                     <div class="text-center mt-3">
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#obraSocial')" class="btn btn-secondary" />
                         <input type="button" id="siguiente" value="Siguiente"
-                            onclick="nextTab('#declaracionJurada1')" class="btn btn-primary" />
+                        (click)="nextTab('#declaracionJurada1')" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -1058,8 +1061,9 @@
                     </div>
 
                     <div class="text-center mt-3">
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#declaracionJurada')" class="btn btn-secondary" />
                         <input type="button" id="siguiente" value="Siguiente"
-                            onclick="nextTab('#tabOdontograma')" class="btn btn-primary" />
+                        (click)="nextTab('#tabOdontograma')" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -1084,6 +1088,9 @@
                             autocomplete="off">
                         <label class="btn btn-outline-danger" for="inputColorRojo">Rojo</label>
                     </div>
+                </div>
+                <div class="text-center mt-3">
+                    <input type="button" id="anterior" value="Anterior" (click)="nextTab('#declaracionJurada1')" class="btn btn-secondary" />
                 </div>
             </div>
         </div>

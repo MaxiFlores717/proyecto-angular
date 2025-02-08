@@ -25,8 +25,8 @@
             @for (paciente of pacientes; track $index) {
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ paciente.nombre }}</td>
-                    <td>{{ paciente.apellido }}</td>
+                    <td>{{ paciente.getNombre }}</td>
+                    <td>{{ paciente.getApellido}}</td>
                 </tr>
             }
         </tbody>

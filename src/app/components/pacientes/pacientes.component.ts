@@ -13,7 +13,7 @@ export class PacientesComponent  implements OnInit{
   pacientes: Paciente[] = [];
 
   constructor(private service: PacienteService){
-  
+  this.pacientes = new Array<Paciente>;
     
   }
 
