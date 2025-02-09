@@ -1,0 +1,16 @@
+
+table.dataTable th,
+table.dataTable td {
+  padding: 8px !important; 
+  text-align: left; 
+}
+
+
+table.dataTable {
+  width: 100% !important;
+  table-layout: fixed; 
+}
+
+th, td {
+  white-space: nowrap; 
+}

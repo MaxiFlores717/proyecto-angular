@@ -10,7 +10,7 @@ import { FormPacienteComponent } from "./components/form-paciente/form-paciente.
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, PacientesComponent, CommonModule, HomeComponent, FormPacienteComponent],
+  imports: [RouterOutlet,HeaderComponent, FooterComponent, PacientesComponent, CommonModule, HomeComponent, FormPacienteComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
