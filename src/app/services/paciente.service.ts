@@ -16,4 +16,8 @@ export class PacienteService {
       map((response: any) => response._embedded.pacientes as Paciente[]),
     );
   }
+  create(paciente: Paciente): Observable<Paciente> {
+  
+    return this.http.post<Paciente>('http://localhost:8080/pacientes',paciente);
+  }
 }

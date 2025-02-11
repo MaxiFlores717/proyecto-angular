@@ -38,7 +38,7 @@ export class DataTableComponent implements OnInit{
           { width: "5%", targets: 5}
 
         ],
-        lengthMenu: [5, 10, 25, 50],
+        lengthMenu: [2, 5, 10, 25, 50],
         processing: true,
         ordering: true,
         search: {

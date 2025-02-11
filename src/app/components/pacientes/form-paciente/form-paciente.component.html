@@ -4,61 +4,64 @@
 </div>
 <!-- Nav tabs -->
 <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active bg-primary text-white" data-bs-toggle="tab"
-        data-bs-target="#datosPersonales" type="button" role="tab" aria-selected="true">Datos
+    <button class="nav-link active bg-primary text-white" data-bs-toggle="tab" data-bs-target="#datosPersonales"
+        type="button" role="tab" aria-selected="true">Datos
         Personales</button>
-    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#imagenes"
-        type="button" role="tab" aria-selected="false">Imágenes</button>
-    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#obraSocial"
-        type="button" role="tab" aria-selected="true">Obra Social</button>
-    <button class="nav-link bg-primary text-white" data-bs-toggle="tab"
-        data-bs-target="#declaracionJurada" type="button" role="tab" aria-selected="false">Historía Clínica Médica</button>
-    <button class="nav-link bg-primary text-white" data-bs-toggle="tab"
-        data-bs-target="#declaracionJurada1" type="button" role="tab" aria-selected="false">Historía Clínica Odontológica</button>
-    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#tabOdontograma"
-        type="button" role="tab" aria-selected="false">Odontograma</button>
+    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#imagenes" type="button"
+        role="tab" aria-selected="false">Imágenes</button>
+    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#obraSocial" type="button"
+        role="tab" aria-selected="true">Obra Social</button>
+    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#declaracionJurada"
+        type="button" role="tab" aria-selected="false">Historía Clínica Médica</button>
+    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#declaracionJurada1"
+        type="button" role="tab" aria-selected="false">Historía Clínica Odontológica</button>
+    <button class="nav-link bg-primary text-white" data-bs-toggle="tab" data-bs-target="#tabOdontograma" type="button"
+        role="tab" aria-selected="false">Odontograma</button>
 </nav>
 <div class="registro border border-primary">
-    <form th:action="@{/paciente/guardar}" th:object="${paciente}" method="post"
-        enctype="multipart/form-data">
+    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="datosPersonales" role="tabpanel" tabindex="0">
                 <div class="row p-4">
                     <div class="col-md-6 mb-3">
                         <label for="inputNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="inputNombre" th:field="*{nombre}">
+                        <input type="text" class="form-control" id="inputNombre" [(ngModel)]="paciente.nombre" name="nombre">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="inputApellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="inputApellido"
-                            th:field="*{apellido}">
+                        <input type="text" class="form-control" id="inputApellido" [(ngModel)]="paciente.apellido" name="apellido">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="inputDni" class="form-label">DNI</label>
                         <input type="text" placeholder="11222333" class="form-control" id="inputDni"
-                            th:field="*{dni}">
+                            [(ngModel)]="paciente.dni" name="dni">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="inputTelefono" class="form-label">Telefono</label>
-                        <input type="tel" class="form-control" id="inpuTelefono"
-                            placeholder="3885872108" th:field="*{telefono}">
+                        <input type="tel" class="form-control" id="inpuTelefono" placeholder="3885872108"
+                            [(ngModel)]="paciente.telefono" name="telefono">
                     </div>
                     <div class="col-md-4">
                         <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                        <input type="text" class="form-control" id="inpuTelefono" 
+                            [(ngModel)]="paciente.nacionalidad" name="nacionalidad">
+                        <!--
                         <select id="nacionalidad" name="nacionalidad" class="form-select">
-                            <option th:each="nacionalidad : ${listaNacionalidad}"
-                                th:value="${nacionalidad}" th:text="${nacionalidad}">
+                            <option th:each="nacionalidad : ${listaNacionalidad}" th:value="${nacionalidad}"
+                                th:text="${nacionalidad}">
                             </option>
                         </select>
+                        -->
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="inputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
                         <input type="date" class="form-control" id="inputFechaNacimiento"
-                            th:field="*{fechaNacimiento}">
+                            [(ngModel)]="paciente.fechaNacimiento" name="fechaNacimiento">
                     </div>
                     <h4 class="mb-3 fw-bold mt-3">Domicilio</h4>
                     <hr>
+                    <!--
                     <div class="col-md-5 mb-3">
                         <label for="inputCalle" class="form-label">Calle</label>
                         <input type="text" placeholder="calle" class="form-control" id="inputCalle"
@@ -71,8 +74,8 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="inputNumero" class="form-label">Barrio: </label>
-                        <input type="text" placeholder="ej: Los Perales" class="form-control"
-                            id="inputNumero" th:field="*{domicilio.barrio}">
+                        <input type="text" placeholder="ej: Los Perales" class="form-control" id="inputNumero"
+                            th:field="*{domicilio.barrio}">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="inputLocalidad" class="form-label">Localidad</label>
@@ -83,9 +86,10 @@
                             </option>
                         </select>
                     </div>
-
-
+ -->
+                    
                     <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                         <input type="button" id="siguiente" value="Siguiente" (click)="nextTab('#imagenes')"
                             class="btn btn-primary" />
                     </div>
@@ -106,10 +110,11 @@
                         </select>
                     </div>
                     <div class="text-center mt-3">
-                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#imagenes')" class="btn btn-secondary" />
-                        <input type="button" id="siguiente" value="Siguiente"
-                        (click)="nextTab('#declaracionJurada')" class="btn btn-primary" />
-                         </div>
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#imagenes')"
+                            class="btn btn-secondary" />
+                        <input type="button" id="siguiente" value="Siguiente" (click)="nextTab('#declaracionJurada')"
+                            class="btn btn-primary" />
+                    </div>
                 </div>
             </div>
             <div class="tab-pane" id="imagenes" role="tabpanel" tabindex="0">
@@ -117,11 +122,11 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="mb-3 fw-bold mt-3">Gestión de Imágenes</h4>
-                            
-                        <button type="button" id="agregar-imagen" class="btn btn-primary">
+
+                        <button type="button" id="agregar-imagen" class="btn btn-primary" (click)="agregarImagen()">
                             <i class="bi bi-plus-lg"></i> Agregar Imágen
                         </button>
-                        
+
                     </div>
                     <hr>
                     <div class="row justify-content-center">
@@ -135,35 +140,36 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="mt-4">
                         <h4 class="mb-3 fw-bold mt-3">Fotos adicionales del paciente:</h4>
-                            <hr>
-                            <div id="contenedor-imagenes" class="row justify-content-center g-3">
+                        <hr>
+                        <div id="contenedor-imagenes" class="row justify-content-center g-3">
 
-                                <div class="col-md-4">
-                                    <div class="card shadow-sm">
-                                        <div class="card-body">
-                                            <label for="imagen1" class="form-label">Fotos
-                                                inicial</label>
-                                            <input type="file" name="files" class="form-control"
-                                                id="imagen1">
-                                        </div>
+                            <div class="col-md-4" *ngFor="let imagen of imagenes; let i = index">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <label for="imagen1" class="form-label">Fotos
+                                            inicial</label>
+                                        <input type="file" name="files" class="form-control" id="imagen1">
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                     <div class="text-center mt-3">
-                    <input type="button" id="anterior" value="Anterior" (click)="nextTab('#datosPersonales')" class="btn btn-secondary" />
-                    <input type="button" id="siguiente" value="Siguiente"
-                    (click)="nextTab('#obraSocial')" class="btn btn-primary" />
-                     </div>
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#datosPersonales')"
+                            class="btn btn-secondary" />
+                        <input type="button" id="siguiente" value="Siguiente" (click)="nextTab('#obraSocial')"
+                            class="btn btn-primary" />
+                    </div>
                 </div>
-                
+
             </div>
             <div class="tab-pane" id="declaracionJurada" role="tabpanel" tabindex="0">
                 <div class="row p-4">
-                    <h5 class="text-danger text-end fs-6 fw-bold">*Este cuestionario tiene el tenor de una "Declaración Jurada"</h5>
+                    <h5 class="text-danger text-end fs-6 fw-bold">*Este cuestionario tiene el tenor de una "Declaración
+                        Jurada"</h5>
                     <h4 class="mb-3 fw-bold col-md-12">Información Familiar</h4>
                     <hr>
                     <div class="form-ckeck col-md-3 p-4">
@@ -197,18 +203,19 @@
                     <div class="form-ckeck col-md-3 p-4">
                         <label class="me-3">Tiene hermanos?</label>
                         <label for="hermanosSi">si</label>
-                        <input class="form-check-input" type="radio" name="hermanos" id="hermanosSi" [(ngModel)]="tieneHermanos" (ngModelChange)="mostrarPregunta()" value="si">
+                        <input class="form-check-input" type="radio" name="hermanos" id="hermanosSi"
+                            [(ngModel)]="tieneHermanos" (ngModelChange)="mostrarPregunta()" value="si">
                         <label for="hermanosNo">No</label>
-                        <input class="form-check-input" type="radio" name="hermanos" id="hermanosNo" [(ngModel)]="tieneHermanos" (ngModelChange)="reiniciarPregunta()" value="no">
+                        <input class="form-check-input" type="radio" name="hermanos" id="hermanosNo"
+                            [(ngModel)]="tieneHermanos" (ngModelChange)="reiniciarPregunta()" value="no">
                     </div>
-                    <div class="form-ckeck col-md-9 p-4" *ngIf="tieneHermanos === 'si'" [ngClass]="{'fondo-azul': fondoAzulHermanos, 'sin-fondo': !fondoAzulHermanos}">
+                    <div class="form-ckeck col-md-9 p-4" *ngIf="tieneHermanos === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulHermanos, 'sin-fondo': !fondoAzulHermanos}">
                         <label class="me-3">Estan sanos?</label>
                         <label for="hermanosSanosSi">si</label>
-                        <input class="form-check-input" type="radio" name="hermanosSanos"
-                            id="hermanosSanosSi">
+                        <input class="form-check-input" type="radio" name="hermanosSanos" id="hermanosSanosSi">
                         <label for="hermanosSanosNo">No</label>
-                        <input class="form-check-input" type="radio" name="hermanosSanos"
-                            id="hermanosSanosNo">
+                        <input class="form-check-input" type="radio" name="hermanosSanos" id="hermanosSanosNo">
                     </div>
 
                     <h4 class="mb-3 mt-3 fw-bold col-md-12">Salud Del Paciente</h4>
@@ -216,13 +223,14 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Sufre de alguna enfermedad?</label>
                         <label for="enfermedadSi">si</label>
-                        <input class="form-check-input" type="radio" name="enfermedad"
-                            id="enfermedadSi" [(ngModel)]="enfermedad" (ngModelChange)="mostrarPreguntaEnfermedad()" value="si">
+                        <input class="form-check-input" type="radio" name="enfermedad" id="enfermedadSi"
+                            [(ngModel)]="enfermedad" (ngModelChange)="mostrarPreguntaEnfermedad()" value="si">
                         <label for="enfermedadNo">No</label>
-                        <input class="form-check-input" type="radio" name="enfermedad"
-                            id="enfermedadNo" [(ngModel)]="enfermedad" (ngModelChange)="mostrarPreguntaEnfermedad()" value="no">
+                        <input class="form-check-input" type="radio" name="enfermedad" id="enfermedadNo"
+                            [(ngModel)]="enfermedad" (ngModelChange)="mostrarPreguntaEnfermedad()" value="no">
                     </div>
-                    <div *ngIf="enfermedad === 'si'" [ngClass]="{'fondo-azul': fondoAzulEnfermedad, 'sin-fondo': !fondoAzulEnfermedad}">
+                    <div *ngIf="enfermedad === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulEnfermedad, 'sin-fondo': !fondoAzulEnfermedad}">
                         <div class="row mt-3">
                             <div class="form-group row col-md-7 p-4">
                                 <label for="enfermedadTipo" class="col-6 col-form-label">De cuál o
@@ -235,11 +243,9 @@
                             <div class="form-ckeck col-md-5 p-4">
                                 <label class="me-3">Hace algún tratamiento médico?:</label>
                                 <label for="tratamientoSi">si</label>
-                                <input class="form-check-input" type="radio" name="tratamiento"
-                                    id="tratamientoSi">
+                                <input class="form-check-input" type="radio" name="tratamiento" id="tratamientoSi">
                                 <label for="tratamientoNo">No</label>
-                                <input class="form-check-input" type="radio" name="tratamiento"
-                                    id="tratamientoNo">
+                                <input class="form-check-input" type="radio" name="tratamiento" id="tratamientoNo">
                             </div>
 
                             <div class="form-group row col-md-12 p-4">
@@ -271,29 +277,31 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Realiza algún deporte?:</label>
                         <label for="deporteSi">si</label>
-                        <input class="form-check-input" type="radio" name="deporte" id="deporteSi" [(ngModel)]="deporte" (ngModelChange)="mostrarPreguntaDeporte()" value="si">
+                        <input class="form-check-input" type="radio" name="deporte" id="deporteSi" [(ngModel)]="deporte"
+                            (ngModelChange)="mostrarPreguntaDeporte()" value="si">
                         <label for="deporteNo">No</label>
-                        <input class="form-check-input" type="radio" name="deporte" id="deporteNo" [(ngModel)]="deporte" (ngModelChange)="mostrarPreguntaDeporte()" value="no">
+                        <input class="form-check-input" type="radio" name="deporte" id="deporteNo" [(ngModel)]="deporte"
+                            (ngModelChange)="mostrarPreguntaDeporte()" value="no">
                     </div>
-                    <div class="form-ckeck col-md-6 p-4" *ngIf="deporte === 'si'" [ngClass]="{'fondo-azul': fondoAzulDeporte, 'sin-fondo': !fondoAzulDeporte}">
+                    <div class="form-ckeck col-md-6 p-4" *ngIf="deporte === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulDeporte, 'sin-fondo': !fondoAzulDeporte}">
                         <label class="me-3">Nota algún malestar al realizarlo?:</label>
                         <label for="deporteMalestarSi">si</label>
-                        <input class="form-check-input" type="radio" name="deporteMalestar"
-                            id="deporteMalestarSi">
+                        <input class="form-check-input" type="radio" name="deporteMalestar" id="deporteMalestarSi">
                         <label for="deporteMalestarNo">No</label>
-                        <input class="form-check-input" type="radio" name="deporteMalestar"
-                            id="deporteMalestarNo">
+                        <input class="form-check-input" type="radio" name="deporteMalestar" id="deporteMalestarNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Es alérgico a alguna droga?:</label>
                         <label for="drogaAlergiaSi">si</label>
-                        <input class="form-check-input" type="radio" name="drogaAlergia"
-                            id="drogaAlergiaSi" [(ngModel)]="droga" (ngModelChange)="mostrarPreguntaDroga()" value="si">
+                        <input class="form-check-input" type="radio" name="drogaAlergia" id="drogaAlergiaSi"
+                            [(ngModel)]="droga" (ngModelChange)="mostrarPreguntaDroga()" value="si">
                         <label for="drogaAlergiaNo">No</label>
-                        <input class="form-check-input" type="radio" name="drogaAlergia"
-                            id="drogaAlergiaNo" [(ngModel)]="droga" (ngModelChange)="mostrarPreguntaDroga()" value="no">
+                        <input class="form-check-input" type="radio" name="drogaAlergia" id="drogaAlergiaNo"
+                            [(ngModel)]="droga" (ngModelChange)="mostrarPreguntaDroga()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="droga === 'si'" [ngClass]="{'fondo-azul': fondoAzulDroga, 'sin-fondo': !fondoAzulDroga}">
+                    <div class="form-group col-md-12 p-4" *ngIf="droga === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulDroga, 'sin-fondo': !fondoAzulDroga}">
                         <label for="drogaAlergiaTipo" class="col col-form-label">A cuál o cuáles drogas?
                             (Ej: a la anestesia, penicilina): </label>
                         <div class="col">
@@ -310,38 +318,38 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene problemas de colágeno (hiperlaxitud)?:</label>
                         <label for="hiperlaxitudSi">si</label>
-                        <input class="form-check-input" type="radio" name="hiperlaxitud"
-                            id="hiperlaxitudSi">
+                        <input class="form-check-input" type="radio" name="hiperlaxitud" id="hiperlaxitudSi">
                         <label for="hiperlaxitudNo">No</label>
-                        <input class="form-check-input" type="radio" name="hiperlaxitud"
-                            id="hiperlaxitudNo">
+                        <input class="form-check-input" type="radio" name="hiperlaxitud" id="hiperlaxitudNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Antecedentes de fiebre reumática?:</label>
                         <label for="fiebreReumaticaSi">si</label>
-                        <input class="form-check-input" type="radio" name="fiebreReumatica"
-                            id="fiebreReumaticaSi" [(ngModel)]="fiebre" (ngModelChange)="mostrarPreguntaFiebre()" value="si">
+                        <input class="form-check-input" type="radio" name="fiebreReumatica" id="fiebreReumaticaSi"
+                            [(ngModel)]="fiebre" (ngModelChange)="mostrarPreguntaFiebre()" value="si">
                         <label for="fiebreReumaticaNo">No</label>
-                        <input class="form-check-input" type="radio" name="fiebreReumatica"
-                            id="fiebreReumaticaNo" [(ngModel)]="fiebre" (ngModelChange)="mostrarPreguntaFiebre()" value="no">
+                        <input class="form-check-input" type="radio" name="fiebreReumatica" id="fiebreReumaticaNo"
+                            [(ngModel)]="fiebre" (ngModelChange)="mostrarPreguntaFiebre()" value="no">
                     </div>
-                    <div class="form-ckeck col-md-6 p-4" *ngIf="fiebre === 'si'" [ngClass]="{'fondo-azul': fondoAzulFiebre, 'sin-fondo': !fondoAzulFiebre}">
+                    <div class="form-ckeck col-md-6 p-4" *ngIf="fiebre === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulFiebre, 'sin-fondo': !fondoAzulFiebre}">
                         <label class="me-3">Se protege con alguna medicación?:</label>
                         <label for="fiebreMedicacionSi">si</label>
-                        <input class="form-check-input" type="radio" name="fiebreMedicacion"
-                            id="fiebreMedicacionSi">
+                        <input class="form-check-input" type="radio" name="fiebreMedicacion" id="fiebreMedicacionSi">
                         <label for="fiebreMedicacionNo">No</label>
-                        <input class="form-check-input" type="radio" name="fiebreMedicacion"
-                            id="fiebreMedicacionNo">
+                        <input class="form-check-input" type="radio" name="fiebreMedicacion" id="fiebreMedicacionNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Es diabético?:</label>
                         <label for="diabeticoSi">si</label>
-                        <input class="form-check-input" type="radio" name="diabetico" id="diabeticoSi" [(ngModel)]="diabetes" (ngModelChange)="mostrarPreguntaDiabetes()" value="si">
+                        <input class="form-check-input" type="radio" name="diabetico" id="diabeticoSi"
+                            [(ngModel)]="diabetes" (ngModelChange)="mostrarPreguntaDiabetes()" value="si">
                         <label for="diabeticoNo">No</label>
-                        <input class="form-check-input" type="radio" name="diabetico" id="diabeticoNo" [(ngModel)]="diabetes" (ngModelChange)="mostrarPreguntaDiabetes()" value="no">
+                        <input class="form-check-input" type="radio" name="diabetico" id="diabeticoNo"
+                            [(ngModel)]="diabetes" (ngModelChange)="mostrarPreguntaDiabetes()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="diabetes === 'si'" [ngClass]="{'fondo-azul': fondoAzulDiabetes, 'sin-fondo': !fondoAzulDiabetes}">
+                    <div class="form-group col-md-12 p-4" *ngIf="diabetes === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulDiabetes, 'sin-fondo': !fondoAzulDiabetes}">
                         <label for="diabetesControl" class="col col-form-label">Está controlado?, con
                             qué?: </label>
                         <div class="col">
@@ -351,11 +359,14 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene algún problema cardíaco?:</label>
                         <label for="cardiacoSi">si</label>
-                        <input class="form-check-input" type="radio" name="cardiaco" id="cardiacoSi" [(ngModel)]="cardiaco" (ngModelChange)="mostrarPreguntaCardiaco()" value="si">
+                        <input class="form-check-input" type="radio" name="cardiaco" id="cardiacoSi"
+                            [(ngModel)]="cardiaco" (ngModelChange)="mostrarPreguntaCardiaco()" value="si">
                         <label for="cardiacoNo">No</label>
-                        <input class="form-check-input" type="radio" name="cardiaco" id="cardiacoNo" [(ngModel)]="cardiaco" (ngModelChange)="mostrarPreguntaCardiaco()" value="no">
+                        <input class="form-check-input" type="radio" name="cardiaco" id="cardiacoNo"
+                            [(ngModel)]="cardiaco" (ngModelChange)="mostrarPreguntaCardiaco()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="cardiaco === 'si'" [ngClass]="{'fondo-azul': fondoAzulCardiaco, 'sin-fondo': !fondoAzulCardiaco}">
+                    <div class="form-group col-md-12 p-4" *ngIf="cardiaco === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulCardiaco, 'sin-fondo': !fondoAzulCardiaco}">
                         <label for="cardiacoTipo" class="col col-form-label">Cuál?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="cardiacoTipo">
@@ -364,15 +375,18 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Toma seguido aspirina y/o anticoagulante?:</label>
                         <label for="aspirinaSi">Si, aspirina</label>
-                        <input class="form-check-input" type="radio" name="aspirinaAnti"
-                            id="aspirinaSi" [(ngModel)]="aspirina" (ngModelChange)="mostrarPreguntaAspirina()" value="aspirina">
+                        <input class="form-check-input" type="radio" name="aspirinaAnti" id="aspirinaSi"
+                            [(ngModel)]="aspirina" (ngModelChange)="mostrarPreguntaAspirina()" value="aspirina">
                         <label for="anticoagulanteSi">Si, anticoagulante</label>
-                        <input class="form-check-input" type="radio" name="aspirinaAnti"
-                            id="anticoagulanteSi" [(ngModel)]="aspirina" (ngModelChange)="mostrarPreguntaAspirina()" value="anticoagulante">
+                        <input class="form-check-input" type="radio" name="aspirinaAnti" id="anticoagulanteSi"
+                            [(ngModel)]="aspirina" (ngModelChange)="mostrarPreguntaAspirina()" value="anticoagulante">
                         <label for="ninguna">Ninguna</label>
-                        <input class="form-check-input" type="radio" name="aspirinaAnti" id="ninguna" [(ngModel)]="aspirina" (ngModelChange)="mostrarPreguntaAspirina()" value="ninguna">
+                        <input class="form-check-input" type="radio" name="aspirinaAnti" id="ninguna"
+                            [(ngModel)]="aspirina" (ngModelChange)="mostrarPreguntaAspirina()" value="ninguna">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="aspirina === 'aspirina' || aspirina === 'anticoagulante'" [ngClass]="{'fondo-azul': fondoAzulAspirina, 'sin-fondo': !fondoAzulAspirina}">
+                    <div class="form-group col-md-12 p-4"
+                        *ngIf="aspirina === 'aspirina' || aspirina === 'anticoagulante'"
+                        [ngClass]="{'fondo-azul': fondoAzulAspirina, 'sin-fondo': !fondoAzulAspirina}">
                         <label for="aspirinaFrecuencia" class="col col-form-label">Con qué frecuencia?:
                         </label>
                         <div class="col">
@@ -382,20 +396,21 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene presión Alta?:</label>
                         <label for="presionAltaSi">si</label>
-                        <input class="form-check-input" type="radio" name="presionAlta"
-                            id="presionAltaSi">
+                        <input class="form-check-input" type="radio" name="presionAlta" id="presionAltaSi">
                         <label for="presionAltaNo">No</label>
-                        <input class="form-check-input" type="radio" name="presionAlta"
-                            id="presionAltaNo">
+                        <input class="form-check-input" type="radio" name="presionAlta" id="presionAltaNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene chagas?:</label>
                         <label for="chagasSi">si</label>
-                        <input class="form-check-input" type="radio" name="chagas" id="chagasSi" [(ngModel)]="chagas" (ngModelChange)="mostrarPreguntaChagas()" value="si">
+                        <input class="form-check-input" type="radio" name="chagas" id="chagasSi" [(ngModel)]="chagas"
+                            (ngModelChange)="mostrarPreguntaChagas()" value="si">
                         <label for="chagasNo">No</label>
-                        <input class="form-check-input" type="radio" name="chagas" id="chagasNo" [(ngModel)]="chagas" (ngModelChange)="mostrarPreguntaChagas()" value="no">
+                        <input class="form-check-input" type="radio" name="chagas" id="chagasNo" [(ngModel)]="chagas"
+                            (ngModelChange)="mostrarPreguntaChagas()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="chagas === 'si'" [ngClass]="{'fondo-azul': fondoAzulChagas, 'sin-fondo': !fondoAzulChagas}">
+                    <div class="form-group col-md-12 p-4" *ngIf="chagas === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulChagas, 'sin-fondo': !fondoAzulChagas}">
                         <label for="chagasTratamiento" class="col col-form-label">Está en tratamiento?,
                             qué tipo de tratamiento?: </label>
                         <div class="col">
@@ -419,30 +434,33 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tuvo hepatitis?:</label>
                         <label for="hepatitisSi">si</label>
-                        <input class="form-check-input" type="radio" name="hepatitis" id="hepatitisSi" [(ngModel)]="hepatitis" (ngModelChange)="mostrarPreguntaHepatitis()" value="si">
+                        <input class="form-check-input" type="radio" name="hepatitis" id="hepatitisSi"
+                            [(ngModel)]="hepatitis" (ngModelChange)="mostrarPreguntaHepatitis()" value="si">
                         <label for="hepatitisNo">No</label>
-                        <input class="form-check-input" type="radio" name="hepatitis" id="hepatitisNo" [(ngModel)]="hepatitis" (ngModelChange)="mostrarPreguntaHepatitis()" value="no">
+                        <input class="form-check-input" type="radio" name="hepatitis" id="hepatitisNo"
+                            [(ngModel)]="hepatitis" (ngModelChange)="mostrarPreguntaHepatitis()" value="no">
                     </div>
-                    <div class="form-ckeck col-md-6 p-4" *ngIf="hepatitis === 'si'" [ngClass]="{'fondo-azul': fondoAzulHepatitis, 'sin-fondo': !fondoAzulHepatitis}">
+                    <div class="form-ckeck col-md-6 p-4" *ngIf="hepatitis === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulHepatitis, 'sin-fondo': !fondoAzulHepatitis}">
                         <label class="me-3">De qué tipo?:</label>
                         <label for="hepatitisA">A</label>
-                        <input class="form-check-input" type="radio" name="hepatitisTipo"
-                            id="hepatitisA">
+                        <input class="form-check-input" type="radio" name="hepatitisTipo" id="hepatitisA">
                         <label for="hepatitisB">B</label>
-                        <input class="form-check-input" type="radio" name="hepatitisTipo"
-                            id="hepatitisB">
+                        <input class="form-check-input" type="radio" name="hepatitisTipo" id="hepatitisB">
                         <label for="hepatitisC">C</label>
-                        <input class="form-check-input" type="radio" name="hepatitisTipo"
-                            id="hepatitisC">
+                        <input class="form-check-input" type="radio" name="hepatitisTipo" id="hepatitisC">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tuvo algún problema hepático?:</label>
                         <label for="hepaticoSi">si</label>
-                        <input class="form-check-input" type="radio" name="hepatico" id="hepaticoSi" [(ngModel)]="hepatico" (ngModelChange)="mostrarPreguntaHepatico()" value="si">
+                        <input class="form-check-input" type="radio" name="hepatico" id="hepaticoSi"
+                            [(ngModel)]="hepatico" (ngModelChange)="mostrarPreguntaHepatico()" value="si">
                         <label for="hepaticoNo">No</label>
-                        <input class="form-check-input" type="radio" name="hepatico" id="hepaticoNo" [(ngModel)]="hepatico" (ngModelChange)="mostrarPreguntaHepatico()" value="no">
+                        <input class="form-check-input" type="radio" name="hepatico" id="hepaticoNo"
+                            [(ngModel)]="hepatico" (ngModelChange)="mostrarPreguntaHepatico()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="hepatico === 'si'" [ngClass]="{'fondo-azul': fondoAzulHepatico, 'sin-fondo': !fondoAzulHepatico}">
+                    <div class="form-group col-md-12 p-4" *ngIf="hepatico === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulHepatico, 'sin-fondo': !fondoAzulHepatico}">
                         <label for="hepaticoTipo" class="col col-form-label">Cuál?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="hepaticoTipo">
@@ -451,22 +469,21 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tuvo convulsiones?:</label>
                         <label for="convulsionesSi">si</label>
-                        <input class="form-check-input" type="radio" name="convulsiones"
-                            id="convulsionesSi">
+                        <input class="form-check-input" type="radio" name="convulsiones" id="convulsionesSi">
                         <label for="convulsionesNo">No</label>
-                        <input class="form-check-input" type="radio" name="convulsiones"
-                            id="convulsionesNo">
+                        <input class="form-check-input" type="radio" name="convulsiones" id="convulsionesNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Es epiléptico?:</label>
                         <label for="epilepticoSi">si</label>
-                        <input class="form-check-input" type="radio" name="epileptico"
-                            id="epilepticoSi" [(ngModel)]="epileptico" (ngModelChange)="mostrarPreguntaEpileptico()" value="si">
+                        <input class="form-check-input" type="radio" name="epileptico" id="epilepticoSi"
+                            [(ngModel)]="epileptico" (ngModelChange)="mostrarPreguntaEpileptico()" value="si">
                         <label for="epilepticoNo">No</label>
-                        <input class="form-check-input" type="radio" name="epileptico"
-                            id="epilepticoNo" [(ngModel)]="epileptico" (ngModelChange)="mostrarPreguntaEpileptico()" value="no">
+                        <input class="form-check-input" type="radio" name="epileptico" id="epilepticoNo"
+                            [(ngModel)]="epileptico" (ngModelChange)="mostrarPreguntaEpileptico()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="epileptico === 'si'" [ngClass]="{'fondo-azul': fondoAzulEpileptico, 'sin-fondo': !fondoAzulEpileptico}">
+                    <div class="form-group col-md-12 p-4" *ngIf="epileptico === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulEpileptico, 'sin-fondo': !fondoAzulEpileptico}">
                         <label for="epilepticoMedicacion" class="col col-form-label">Qué medicación
                             toma?: </label>
                         <div class="col">
@@ -476,23 +493,23 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Ha tenido sifilis o gonorrea?:</label>
                         <label for="sifilisSi">Si, sifilis</label>
-                        <input class="form-check-input" type="radio" name="sifilisGonorrea"
-                            id="sifilisSi">
+                        <input class="form-check-input" type="radio" name="sifilisGonorrea" id="sifilisSi">
                         <label for="gonorreaSi">Si, gonorrea</label>
-                        <input class="form-check-input" type="radio" name="sifilisGonorrea"
-                            id="gonorreaSi">
+                        <input class="form-check-input" type="radio" name="sifilisGonorrea" id="gonorreaSi">
                         <label for="sifilisGonorreaNo">No, nunca tuve sifilis o gonorrea</label>
-                        <input class="form-check-input" type="radio" name="sifilisGonorrea"
-                            id="sifilisGonorreaNo">
+                        <input class="form-check-input" type="radio" name="sifilisGonorrea" id="sifilisGonorreaNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Otra enfermedad infecto-contagiosa?:</label>
                         <label for="infectoSi">Si</label>
-                        <input class="form-check-input" type="radio" name="infecto" id="infectoSi" [(ngModel)]="infecto" (ngModelChange)="mostrarPreguntaInfecto()" value="si">
+                        <input class="form-check-input" type="radio" name="infecto" id="infectoSi" [(ngModel)]="infecto"
+                            (ngModelChange)="mostrarPreguntaInfecto()" value="si">
                         <label for="infectoNo">No</label>
-                        <input class="form-check-input" type="radio" name="infecto" id="infectoNo" [(ngModel)]="infecto" (ngModelChange)="mostrarPreguntaInfecto()" value="no">
+                        <input class="form-check-input" type="radio" name="infecto" id="infectoNo" [(ngModel)]="infecto"
+                            (ngModelChange)="mostrarPreguntaInfecto()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="infecto === 'si'" [ngClass]="{'fondo-azul': fondoAzulInfecto, 'sin-fondo': !fondoAzulInfecto}">
+                    <div class="form-group col-md-12 p-4" *ngIf="infecto === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulInfecto, 'sin-fondo': !fondoAzulInfecto}">
                         <label for="infectoTipo" class="col col-form-label">Cuál?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="infectoTipo">
@@ -501,20 +518,21 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tuvo transfusiones?:</label>
                         <label for="transfusionSi">Si</label>
-                        <input class="form-check-input" type="radio" name="transfusion"
-                            id="transfusionSi">
+                        <input class="form-check-input" type="radio" name="transfusion" id="transfusionSi">
                         <label for="transfusionNo">No</label>
-                        <input class="form-check-input" type="radio" name="transfusion"
-                            id="transfusionNo">
+                        <input class="form-check-input" type="radio" name="transfusion" id="transfusionNo">
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Fue operado alguna vez?:</label>
                         <label for="operadoSi">Si</label>
-                        <input class="form-check-input" type="radio" name="operado" id="operadoSi" [(ngModel)]="operado" (ngModelChange)="mostrarPreguntaOperado()" value="si">
+                        <input class="form-check-input" type="radio" name="operado" id="operadoSi" [(ngModel)]="operado"
+                            (ngModelChange)="mostrarPreguntaOperado()" value="si">
                         <label for="operadoNo">No</label>
-                        <input class="form-check-input" type="radio" name="operado" id="operadoNo" [(ngModel)]="operado" (ngModelChange)="mostrarPreguntaOperado()" value="no">
+                        <input class="form-check-input" type="radio" name="operado" id="operadoNo" [(ngModel)]="operado"
+                            (ngModelChange)="mostrarPreguntaOperado()" value="no">
                     </div>
-                    <div *ngIf="operado === 'si'" [ngClass]="{'fondo-azul': fondoAzulOperado, 'sin-fondo': !fondoAzulOperado}">
+                    <div *ngIf="operado === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulOperado, 'sin-fondo': !fondoAzulOperado}">
                         <div class="row">
                             <div class="form-group col-md-6 p-4">
                                 <label for="operacionTipo" class="col col-form-label">De qué?: </label>
@@ -534,13 +552,14 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene algún problema respiratorio?:</label>
                         <label for="respiratorioSi">Si</label>
-                        <input class="form-check-input" type="radio" name="respiratorio"
-                            id="respiratorioSi" [(ngModel)]="respiratorio" (ngModelChange)="mostrarPreguntaRespiratorio()" value="si">
+                        <input class="form-check-input" type="radio" name="respiratorio" id="respiratorioSi"
+                            [(ngModel)]="respiratorio" (ngModelChange)="mostrarPreguntaRespiratorio()" value="si">
                         <label for="respiratorioNo">No</label>
-                        <input class="form-check-input" type="radio" name="respiratorio"
-                            id="respiratorioNo" [(ngModel)]="respiratorio" (ngModelChange)="mostrarPreguntaRespiratorio()" value="no">
+                        <input class="form-check-input" type="radio" name="respiratorio" id="respiratorioNo"
+                            [(ngModel)]="respiratorio" (ngModelChange)="mostrarPreguntaRespiratorio()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="respiratorio === 'si'" [ngClass]="{'fondo-azul': fondoAzulRespiratio, 'sin-fondo': !fondoAzulRespiratio}">
+                    <div class="form-group col-md-12 p-4" *ngIf="respiratorio === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulRespiratio, 'sin-fondo': !fondoAzulRespiratio}">
                         <label for="respiratorioTipo" class="col col-form-label">Cuál?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="respiratorioTipo">
@@ -556,13 +575,14 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Está embarazada?:</label>
                         <label for="embarazadaSi">Si</label>
-                        <input class="form-check-input" type="radio" name="embarazada"
-                            id="embarazadaSi" [(ngModel)]="embarazada" (ngModelChange)="mostrarPreguntaEmbarazo()" value="si">
+                        <input class="form-check-input" type="radio" name="embarazada" id="embarazadaSi"
+                            [(ngModel)]="embarazada" (ngModelChange)="mostrarPreguntaEmbarazo()" value="si">
                         <label for="embarazadaNo">No</label>
-                        <input class="form-check-input" type="radio" name="embarazada"
-                            id="embarazadaNo" [(ngModel)]="embarazada" (ngModelChange)="mostrarPreguntaEmbarazo()" value="no">
+                        <input class="form-check-input" type="radio" name="embarazada" id="embarazadaNo"
+                            [(ngModel)]="embarazada" (ngModelChange)="mostrarPreguntaEmbarazo()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="embarazada === 'si'" [ngClass]="{'fondo-azul': fondoAzulEmbarazada, 'sin-fondo': !fondoAzulEmbarazada}">
+                    <div class="form-group col-md-12 p-4" *ngIf="embarazada === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulEmbarazada, 'sin-fondo': !fondoAzulEmbarazada}">
                         <label for="embarazadaMeses" class="col col-form-label">De cuantos meses?:
                         </label>
                         <div class="col">
@@ -574,12 +594,15 @@
                             quiera dejar constancia?:</label>
                         <label for="recomendacionMedicaSi">Si</label>
                         <input class="form-check-input" type="radio" name="recomendacionMedica"
-                            id="recomendacionMedicaSi" [(ngModel)]="recomendacionMedica" (ngModelChange)="mostrarPreguntaRecomendacionM()" value="si">
+                            id="recomendacionMedicaSi" [(ngModel)]="recomendacionMedica"
+                            (ngModelChange)="mostrarPreguntaRecomendacionM()" value="si">
                         <label for="recomendacionMedicaNo">No</label>
                         <input class="form-check-input" type="radio" name="recomendacionMedica"
-                            id="recomendacionMedicaNo" [(ngModel)]="recomendacionMedica" (ngModelChange)="mostrarPreguntaRecomendacionM()" value="no">
+                            id="recomendacionMedicaNo" [(ngModel)]="recomendacionMedica"
+                            (ngModelChange)="mostrarPreguntaRecomendacionM()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="recomendacionMedica === 'si'" [ngClass]="{'fondo-azul': fondoAzulRecomendacionMedica, 'sin-fondo': !fondoAzulRecomendacionMedica}">
+                    <div class="form-group col-md-12 p-4" *ngIf="recomendacionMedica === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulRecomendacionMedica, 'sin-fondo': !fondoAzulRecomendacionMedica}">
                         <label for="recomendacionMedicaTipo" class="col col-form-label">Cuál?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="recomendacionMedicaTipo">
@@ -606,16 +629,18 @@
                         </div>
                     </div>
                     <div class="text-center mt-3">
-                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#obraSocial')" class="btn btn-secondary" />
-                        <input type="button" id="siguiente" value="Siguiente"
-                        (click)="nextTab('#declaracionJurada1')" class="btn btn-primary" />
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#obraSocial')"
+                            class="btn btn-secondary" />
+                        <input type="button" id="siguiente" value="Siguiente" (click)="nextTab('#declaracionJurada1')"
+                            class="btn btn-primary" />
                     </div>
                 </div>
             </div>
             <div class="tab-pane" id="declaracionJurada1" role="tabpanel" tabindex="0">
                 <div class="row p-4">
                     <div class="form-group col-md-6 p-4">
-                        <label for="asistenciaConsulta" class="col col-form-label">Por qué asistió a la consulta?: </label>
+                        <label for="asistenciaConsulta" class="col col-form-label">Por qué asistió a la consulta?:
+                        </label>
                         <div class="col">
                             <input type="text" class="form-control" id="asistenciaConsulta">
                         </div>
@@ -632,56 +657,60 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Toma algún medicamento?:</label>
                         <label for="medicamentoOdontoSi">Si</label>
-                        <input class="form-check-input" type="radio" name="medicamentoOdonto"
-                           id="medicamentoOdontoSi"  [(ngModel)]="medicacionOdonto" (ngModelChange)="mostrarPreguntaMedicacionOdonto()" value="si">
+                        <input class="form-check-input" type="radio" name="medicamentoOdonto" id="medicamentoOdontoSi"
+                            [(ngModel)]="medicacionOdonto" (ngModelChange)="mostrarPreguntaMedicacionOdonto()"
+                            value="si">
                         <label for="medicamentoOdontoNo">No</label>
-                        <input class="form-check-input" type="radio" name="medicamentoOdonto"
-                            id="medicamentoOdontoNo"  [(ngModel)]="medicacionOdonto" (ngModelChange)="mostrarPreguntaMedicacionOdonto()" value="no">
+                        <input class="form-check-input" type="radio" name="medicamentoOdonto" id="medicamentoOdontoNo"
+                            [(ngModel)]="medicacionOdonto" (ngModelChange)="mostrarPreguntaMedicacionOdonto()"
+                            value="no">
                     </div>
-                    <div *ngIf="medicacionOdonto === 'si'" [ngClass]="{'fondo-azul': fondoAzulMedicacionOdonto, 'sin-fondo': !fondoAzulMedicacionOdonto}">
-                    <div class="row mt-3">
-                    <div class="form-group col-md-6 p-4">
-                        <label for="nombreMedicamento" class="col col-form-label">Nombre de los medicamentos: </label>
-                        <div class="col">
-                            <input type="text" class="form-control" id="nombreMedicamento">
+                    <div *ngIf="medicacionOdonto === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulMedicacionOdonto, 'sin-fondo': !fondoAzulMedicacionOdonto}">
+                        <div class="row mt-3">
+                            <div class="form-group col-md-6 p-4">
+                                <label for="nombreMedicamento" class="col col-form-label">Nombre de los medicamentos:
+                                </label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="nombreMedicamento">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 p-4">
+                                <label for="tiempoMedicamento" class="col col-form-label">Desde cuando?: </label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="tiempoMedicamento">
+                                </div>
+                            </div>
+                            <div class="form-ckeck col-md-6 p-4">
+                                <label class="me-3">Obtuvo resultados?:</label>
+                                <label for="medicamentoResultadosSi">Si</label>
+                                <input class="form-check-input" type="radio" name="medicamentoResultados"
+                                    id="medicamentoResultadosSi">
+                                <label for="medicamentoResultadosNo">No</label>
+                                <input class="form-check-input" type="radio" name="medicamentoResultados"
+                                    id="medicamentoResultadosNo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-md-6 p-4">
-                        <label for="tiempoMedicamento" class="col col-form-label">Desde cuando?: </label>
-                        <div class="col">
-                            <input type="text" class="form-control" id="tiempoMedicamento">
-                        </div>
-                    </div>
-                    <div class="form-ckeck col-md-6 p-4">
-                        <label class="me-3">Obtuvo resultados?:</label>
-                        <label for="medicamentoResultadosSi">Si</label>
-                        <input class="form-check-input" type="radio" name="medicamentoResultados"
-                            id="medicamentoResultadosSi">
-                        <label for="medicamentoResultadosNo">No</label>
-                        <input class="form-check-input" type="radio" name="medicamentoResultados"
-                            id="medicamentoResultadosNo">
-                    </div>
-                    </div>
-                    <hr>
+                        <hr>
                     </div>
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Ha tenido dolor?:</label>
                         <label for="dolorSi">Si</label>
-                        <input class="form-check-input" type="radio" name="dolor"
-                            id="dolorSi" [(ngModel)]="dolor" (ngModelChange)="mostrarPreguntaDolor()" value="si">
+                        <input class="form-check-input" type="radio" name="dolor" id="dolorSi" [(ngModel)]="dolor"
+                            (ngModelChange)="mostrarPreguntaDolor()" value="si">
                         <label for="dolorNo">No</label>
-                        <input class="form-check-input" type="radio" name="dolor"
-                            id="dolorNo" [(ngModel)]="dolor" (ngModelChange)="mostrarPreguntaDolor()" value="no">
+                        <input class="form-check-input" type="radio" name="dolor" id="dolorNo" [(ngModel)]="dolor"
+                            (ngModelChange)="mostrarPreguntaDolor()" value="no">
                     </div>
-                    <div *ngIf="dolor === 'si'" [ngClass]="{'fondo-azul': fondoAzulDolor, 'sin-fondo': !fondoAzulDolor}">
+                    <div *ngIf="dolor === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulDolor, 'sin-fondo': !fondoAzulDolor}">
                         <div class="row mt-3">
                             <div class="form-ckeck col-md-6 p-4">
                                 <label class="me-3">De qué tipo?:</label>
                                 <h5 class="mb-3 fw-bold col-md-12 mt-3">Intensidad</h5>
                                 <hr>
                                 <label for="dolorSuave">Suave</label>
-                                <input class="form-check-input" type="radio" name="dolorTipoIntensidad"
-                                    id="dolorSuave">
+                                <input class="form-check-input" type="radio" name="dolorTipoIntensidad" id="dolorSuave">
                                 <label for="dolorModerado">Moderado</label>
                                 <input class="form-check-input" type="radio" name="dolorTipoIntensidad"
                                     id="dolorModerado">
@@ -702,25 +731,19 @@
                                 <h5 class="mb-3 fw-bold col-md-12 mt-3">Tipo</h5>
                                 <hr>
                                 <label for="dolorEspontaneo">Espontáneo</label>
-                                <input class="form-check-input" type="radio" name="dolorTipo"
-                                    id="dolorEspontaneo">
+                                <input class="form-check-input" type="radio" name="dolorTipo" id="dolorEspontaneo">
                                 <label for="dolorProvocado">Provocado</label>
-                                <input class="form-check-input" type="radio" name="dolorTipo"
-                                    id="dolorProvocado">
+                                <input class="form-check-input" type="radio" name="dolorTipo" id="dolorProvocado">
                                 <label for="dolorAlFrio">Al Frío</label>
-                                <input class="form-check-input" type="radio" name="dolorTipo"
-                                    id="dolorAlFrio">
+                                <input class="form-check-input" type="radio" name="dolorTipo" id="dolorAlFrio">
                                 <label for="dolorAlCalor">Al Calor</label>
-                                <input class="form-check-input" type="radio" name="dolorTipo"
-                                    id="dolorAlCalor">
+                                <input class="form-check-input" type="radio" name="dolorTipo" id="dolorAlCalor">
                                 <h5 class="mb-3 fw-bold col-md-12 mt-3">Lugar</h5>
                                 <hr>
                                 <label for="dolorLocalizado">Localizado</label>
-                                <input class="form-check-input" type="radio" name="dolorTipoLugar"
-                                    id="dolorLocalizado">
+                                <input class="form-check-input" type="radio" name="dolorTipoLugar" id="dolorLocalizado">
                                 <label for="dolorIrradiado">Irradiado</label>
-                                <input class="form-check-input" type="radio" name="dolorTipoLugar"
-                                    id="dolorIrradiado">
+                                <input class="form-check-input" type="radio" name="dolorTipoLugar" id="dolorIrradiado">
                             </div>
                             <div class="form-group col-md-6 p-4" id="dolorLocalizadoField">
                                 <label for="dolorLocalizadoLugar" class="col col-form-label">Dónde?: </label>
@@ -746,20 +769,21 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Sufrió algún golpe en los dientes?:</label>
                         <label for="golpeDienteSi">Si</label>
-                        <input class="form-check-input" type="radio" name="golpeDiente"
-                            id="golpeDienteSi" [(ngModel)]="golpeDiente" (ngModelChange)="mostrarPreguntaGolpeDiente()" value="si">
+                        <input class="form-check-input" type="radio" name="golpeDiente" id="golpeDienteSi"
+                            [(ngModel)]="golpeDiente" (ngModelChange)="mostrarPreguntaGolpeDiente()" value="si">
                         <label for="golpeDienteNo">No</label>
-                        <input class="form-check-input" type="radio" name="golpeDiente"
-                            id="golpeDienteNo" [(ngModel)]="golpeDiente" (ngModelChange)="mostrarPreguntaGolpeDiente()" value="no">
+                        <input class="form-check-input" type="radio" name="golpeDiente" id="golpeDienteNo"
+                            [(ngModel)]="golpeDiente" (ngModelChange)="mostrarPreguntaGolpeDiente()" value="no">
                     </div>
-                    <div *ngIf="golpeDiente === 'si'" [ngClass]="{'fondo-azul': fondoAzulGolpeDiente, 'sin-fondo': !fondoAzulGolpeDiente}">
+                    <div *ngIf="golpeDiente === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulGolpeDiente, 'sin-fondo': !fondoAzulGolpeDiente}">
                         <div class="row mt-3">
                             <div class="form-group col-md-6 p-4">
                                 <label for="golpeDienteTiempo" class="col col-form-label">Cuándo?: </label>
                                 <div class="col">
                                     <input type="text" class="form-control" id="golpeDienteTiempo">
                                 </div>
-                            </div>  
+                            </div>
                             <div class="form-group col-md-6 p-4">
                                 <label for="golpeDienteProdujo" class="col col-form-label">Cómo se produjo?: </label>
                                 <div class="col">
@@ -784,11 +808,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 p-4">
-                                        <label for="golpeDienteFracturaTratamiento" class="col col-form-label">Recibió algún tratamiento?: </label>
+                                        <label for="golpeDienteFracturaTratamiento" class="col col-form-label">Recibió
+                                            algún tratamiento?: </label>
                                         <div class="col">
                                             <input type="text" class="form-control" id="golpeDienteFracturaTratamiento">
                                         </div>
-                                    </div>    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -797,32 +822,32 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Tiene Dificultad Para:</label>
                         <div class="row mt-3">
-                        <div class="col-md-5 p-2">
-                        <label class="me-3">Hablar?</label>
-                        <label for="dificultadHablarSi">Si</label>
-                        <input class="form-check-input" type="radio" name="dificultadHablar"
-                            id="dificultadHablarSi">
-                        <label for="dificultadHablarNo">No</label>
-                        <input class="form-check-input" type="radio" name="dificultadHablar"
-                            id="dificultadHablarNo">
-                        </div>
-                        <div class="col-md-7 p-2">
-                        <label class="me-3">Masticar?</label>
-                        <label for="dificultadMasticarSi">Si</label>
-                        <input class="form-check-input" type="radio" name="dificultadMasticar"
-                            id="dificultadMasticarSi">
-                        <label for="dificultadMasticarNo">No</label>
-                        <input class="form-check-input" type="radio" name="dificultadMasticar"
-                            id="dificultadMasticarNo">
-                        </div>
-                        <div class="col-md-5 p-2">
-                            <label class="me-3">Abrir la boca?</label>
-                            <label for="dificultadBocaSi">Si</label>
-                            <input class="form-check-input" type="radio" name="dificultadBoca"
-                                id="dificultadBocaSi">
-                            <label for="dificultadBocaNo">No</label>
-                            <input class="form-check-input" type="radio" name="dificultadBoca"
-                                id="dificultadBocaNo">
+                            <div class="col-md-5 p-2">
+                                <label class="me-3">Hablar?</label>
+                                <label for="dificultadHablarSi">Si</label>
+                                <input class="form-check-input" type="radio" name="dificultadHablar"
+                                    id="dificultadHablarSi">
+                                <label for="dificultadHablarNo">No</label>
+                                <input class="form-check-input" type="radio" name="dificultadHablar"
+                                    id="dificultadHablarNo">
+                            </div>
+                            <div class="col-md-7 p-2">
+                                <label class="me-3">Masticar?</label>
+                                <label for="dificultadMasticarSi">Si</label>
+                                <input class="form-check-input" type="radio" name="dificultadMasticar"
+                                    id="dificultadMasticarSi">
+                                <label for="dificultadMasticarNo">No</label>
+                                <input class="form-check-input" type="radio" name="dificultadMasticar"
+                                    id="dificultadMasticarNo">
+                            </div>
+                            <div class="col-md-5 p-2">
+                                <label class="me-3">Abrir la boca?</label>
+                                <label for="dificultadBocaSi">Si</label>
+                                <input class="form-check-input" type="radio" name="dificultadBoca"
+                                    id="dificultadBocaSi">
+                                <label for="dificultadBocaNo">No</label>
+                                <input class="form-check-input" type="radio" name="dificultadBoca"
+                                    id="dificultadBocaNo">
                             </div>
                             <div class="col-md-7 p-2">
                                 <label class="me-3">Tragar los alimentos?</label>
@@ -838,32 +863,28 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Ha observado algo anormal en:</label>
                         <div class="row mt-3">
-                        <div class="col-md-6 p-2">
-                        <label class="me-3">Los labios?</label>
-                        <label for="anormalLabiosSi">Si</label>
-                        <input class="form-check-input" type="radio" name="anormalLabios"
-                            id="anormalLabiosSi">
-                        <label for="anormalLabiosNo">No</label>
-                        <input class="form-check-input" type="radio" name="anormalLabios"
-                            id="anormalLabiosNo">
-                        </div>
-                        <div class="col-md-6 p-2">
-                        <label class="me-3">Lengua?</label>
-                        <label for="anormalLenguaSi">Si</label>
-                        <input class="form-check-input" type="radio" name="anormalLengua"
-                            id="anormalLenguaSi">
-                        <label for="anormalLenguaNo">No</label>
-                        <input class="form-check-input" type="radio" name="anormalLengua"
-                            id="anormalLenguaNo">
-                        </div>
-                        <div class="col-md-6 p-2">
-                            <label class="me-3">Paladar?</label>
-                            <label for="anormalPaladarSi">Si</label>
-                            <input class="form-check-input" type="radio" name="anormalPaladar"
-                                id="anormalPaladarSi">
-                            <label for="anormalPaladarNo">No</label>
-                            <input class="form-check-input" type="radio" name="anormalPaladar"
-                                id="anormalPaladarNo">
+                            <div class="col-md-6 p-2">
+                                <label class="me-3">Los labios?</label>
+                                <label for="anormalLabiosSi">Si</label>
+                                <input class="form-check-input" type="radio" name="anormalLabios" id="anormalLabiosSi">
+                                <label for="anormalLabiosNo">No</label>
+                                <input class="form-check-input" type="radio" name="anormalLabios" id="anormalLabiosNo">
+                            </div>
+                            <div class="col-md-6 p-2">
+                                <label class="me-3">Lengua?</label>
+                                <label for="anormalLenguaSi">Si</label>
+                                <input class="form-check-input" type="radio" name="anormalLengua" id="anormalLenguaSi">
+                                <label for="anormalLenguaNo">No</label>
+                                <input class="form-check-input" type="radio" name="anormalLengua" id="anormalLenguaNo">
+                            </div>
+                            <div class="col-md-6 p-2">
+                                <label class="me-3">Paladar?</label>
+                                <label for="anormalPaladarSi">Si</label>
+                                <input class="form-check-input" type="radio" name="anormalPaladar"
+                                    id="anormalPaladarSi">
+                                <label for="anormalPaladarNo">No</label>
+                                <input class="form-check-input" type="radio" name="anormalPaladar"
+                                    id="anormalPaladarNo">
                             </div>
                             <div class="col-md-6 p-2">
                                 <label class="me-3">Piso de boca?</label>
@@ -915,41 +936,33 @@
                     <div class="form-ckeck col-md-6 p-4">
                         <label class="me-3">Qué tipo de lesiones presenta:</label>
                         <div class="row mt-3">
-                        <div class="col-md-5 p-2">
-                        <label class="me-3">Manchas?</label>
-                        <label for="lesionManchasSi">Si</label>
-                        <input class="form-check-input" type="radio" name="lesionManchas"
-                            id="lesionManchasSi">
-                        <label for="lesionManchasNo">No</label>
-                        <input class="form-check-input" type="radio" name="lesionManchas"
-                            id="lesionManchasNo">
-                        </div>
-                        <div class="col-md-7 p-2">
-                        <label class="me-3">Abultamiento de los tejidos?</label>
-                        <label for="lesionTejidosSi">Si</label>
-                        <input class="form-check-input" type="radio" name="lesionTejidos"
-                            id="lesionTejidosSi">
-                        <label for="lesionTejidosNo">No</label>
-                        <input class="form-check-input" type="radio" name="lesionTejidos"
-                            id="lesionTejidosNo">
-                        </div>
-                        <div class="col-md-5 p-2">
-                            <label class="me-3">Ulceraciones?</label>
-                            <label for="lesionUlceraSi">Si</label>
-                            <input class="form-check-input" type="radio" name="lesionUlcera"
-                                id="lesionUlceraSi">
-                            <label for="lesionUlceraNo">No</label>
-                            <input class="form-check-input" type="radio" name="lesionUlcera"
-                                id="lesionUlceraNo">
+                            <div class="col-md-5 p-2">
+                                <label class="me-3">Manchas?</label>
+                                <label for="lesionManchasSi">Si</label>
+                                <input class="form-check-input" type="radio" name="lesionManchas" id="lesionManchasSi">
+                                <label for="lesionManchasNo">No</label>
+                                <input class="form-check-input" type="radio" name="lesionManchas" id="lesionManchasNo">
+                            </div>
+                            <div class="col-md-7 p-2">
+                                <label class="me-3">Abultamiento de los tejidos?</label>
+                                <label for="lesionTejidosSi">Si</label>
+                                <input class="form-check-input" type="radio" name="lesionTejidos" id="lesionTejidosSi">
+                                <label for="lesionTejidosNo">No</label>
+                                <input class="form-check-input" type="radio" name="lesionTejidos" id="lesionTejidosNo">
+                            </div>
+                            <div class="col-md-5 p-2">
+                                <label class="me-3">Ulceraciones?</label>
+                                <label for="lesionUlceraSi">Si</label>
+                                <input class="form-check-input" type="radio" name="lesionUlcera" id="lesionUlceraSi">
+                                <label for="lesionUlceraNo">No</label>
+                                <input class="form-check-input" type="radio" name="lesionUlcera" id="lesionUlceraNo">
                             </div>
                             <div class="col-md-7 p-2">
                                 <label class="me-3">Ampollas?</label>
                                 <label for="lesionAmpoSi">Si</label>
-                                <input class="form-check-input" type="radio" name="lesionAmpo"
-                                    id="lesionAmpoSi">
+                                <input class="form-check-input" type="radio" name="lesionAmpo" id="lesionAmpoSi">
                                 <label for="lesionAmpoNo">No</label>
-                                <input class="form-check-input" type="radio" name="lesionAmpo"
-                                    id="lesionAmpoNo">
+                                <input class="form-check-input" type="radio" name="lesionAmpo" id="lesionAmpoNo">
                             </div>
                             <div class="form-group col-md-12 p-2">
                                 <label for="lesionOtros" class="col col-form-label">Otros?: </label>
@@ -962,13 +975,14 @@
                     <div class="col-md-6 p-4">
                         <label class="me-3">Le sangran las encias?</label>
                         <label for="sangreEnciasSi">Si</label>
-                        <input class="form-check-input" type="radio" name="sangreEncias"
-                            id="sangreEnciasSi" [(ngModel)]="encias" (ngModelChange)="mostrarPreguntaEncias()" value="si">
+                        <input class="form-check-input" type="radio" name="sangreEncias" id="sangreEnciasSi"
+                            [(ngModel)]="encias" (ngModelChange)="mostrarPreguntaEncias()" value="si">
                         <label for="sangreEnciasNo">No</label>
-                        <input class="form-check-input" type="radio" name="sangreEncias"
-                            id="sangreEnciasNo" [(ngModel)]="encias" (ngModelChange)="mostrarPreguntaEncias()" value="no">
+                        <input class="form-check-input" type="radio" name="sangreEncias" id="sangreEnciasNo"
+                            [(ngModel)]="encias" (ngModelChange)="mostrarPreguntaEncias()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="encias === 'si'" [ngClass]="{'fondo-azul': fondoAzulEncias, 'sin-fondo': !fondoAzulEncias}">
+                    <div class="form-group col-md-12 p-4" *ngIf="encias === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulEncias, 'sin-fondo': !fondoAzulEncias}">
                         <label for="sangreEnciasCuando" class="col col-form-label">Cuándo?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="sangreEnciasCuando">
@@ -977,13 +991,14 @@
                     <div class="col-md-6 p-4">
                         <label class="me-3">Sale pus en algún lugar de su boca?</label>
                         <label for="pusSi">Si</label>
-                        <input class="form-check-input" type="radio" name="pus"
-                            id="pusSi" [(ngModel)]="pus" (ngModelChange)="mostrarPreguntaPus()" value="si">
+                        <input class="form-check-input" type="radio" name="pus" id="pusSi" [(ngModel)]="pus"
+                            (ngModelChange)="mostrarPreguntaPus()" value="si">
                         <label for="pusNo">No</label>
-                        <input class="form-check-input" type="radio" name="pus"
-                            id="pusNo" [(ngModel)]="pus" (ngModelChange)="mostrarPreguntaPus()" value="no">
+                        <input class="form-check-input" type="radio" name="pus" id="pusNo" [(ngModel)]="pus"
+                            (ngModelChange)="mostrarPreguntaPus()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="pus === 'si'" [ngClass]="{'fondo-azul': fondoAzulPus, 'sin-fondo': !fondoAzulPus}">
+                    <div class="form-group col-md-12 p-4" *ngIf="pus === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulPus, 'sin-fondo': !fondoAzulPus}">
                         <label for="pusLugar" class="col col-form-label">De donde?: </label>
                         <div class="col">
                             <input type="text" class="form-control" id="pusLugar">
@@ -992,32 +1007,30 @@
                     <div class="col-md-6 p-4">
                         <label class="me-3">Tiene Movilidad en los dientes?</label>
                         <label for="dienteMovilSi">Si</label>
-                        <input class="form-check-input" type="radio" name="dienteMovil"
-                            id="dienteMovilSi">
+                        <input class="form-check-input" type="radio" name="dienteMovil" id="dienteMovilSi">
                         <label for="dienteMovilNo">No</label>
-                        <input class="form-check-input" type="radio" name="dienteMovil"
-                            id="dienteMovilNo">
+                        <input class="form-check-input" type="radio" name="dienteMovil" id="dienteMovilNo">
                     </div>
                     <div class="col-md-6 p-4">
                         <label class="me-3">Al morder siente altos los dientes?</label>
                         <label for="dienteAltoSi">Si</label>
-                        <input class="form-check-input" type="radio" name="dienteAlto"
-                            id="dienteAltoSi">
+                        <input class="form-check-input" type="radio" name="dienteAlto" id="dienteAltoSi">
                         <label for="dienteAltoNo">No</label>
-                        <input class="form-check-input" type="radio" name="dienteAlto"
-                            id="dienteAltoNo">
+                        <input class="form-check-input" type="radio" name="dienteAlto" id="dienteAltoNo">
                     </div>
                     <div class="col-md-6 p-4">
                         <label class="me-3">Ha tenido la cara hinchada?</label>
                         <label for="caraHinchadaSi">Si</label>
-                        <input class="form-check-input" type="radio" name="caraHinchada"
-                            id="caraHinchadaSi" [(ngModel)]="caraHinchada" (ngModelChange)="mostrarPreguntaCaraHinchada()" value="si">
+                        <input class="form-check-input" type="radio" name="caraHinchada" id="caraHinchadaSi"
+                            [(ngModel)]="caraHinchada" (ngModelChange)="mostrarPreguntaCaraHinchada()" value="si">
                         <label for="caraHinchadaNo">No</label>
-                        <input class="form-check-input" type="radio" name="caraHinchada"
-                            id="caraHinchadaNo" [(ngModel)]="caraHinchada" (ngModelChange)="mostrarPreguntaCaraHinchada()" value="no">
+                        <input class="form-check-input" type="radio" name="caraHinchada" id="caraHinchadaNo"
+                            [(ngModel)]="caraHinchada" (ngModelChange)="mostrarPreguntaCaraHinchada()" value="no">
                     </div>
-                    <div class="form-group col-md-12 p-4" *ngIf="caraHinchada === 'si'" [ngClass]="{'fondo-azul': fondoAzulCaraHinchada, 'sin-fondo': !fondoAzulCaraHinchada}">
-                        <label for="caraHinchadaTratam" class="col col-form-label">Se puso hielo, calor u otros?: </label>
+                    <div class="form-group col-md-12 p-4" *ngIf="caraHinchada === 'si'"
+                        [ngClass]="{'fondo-azul': fondoAzulCaraHinchada, 'sin-fondo': !fondoAzulCaraHinchada}">
+                        <label for="caraHinchadaTratam" class="col col-form-label">Se puso hielo, calor u otros?:
+                        </label>
                         <div class="col">
                             <input type="text" class="form-control" id="caraHinchadaTratam">
                         </div>
@@ -1037,33 +1050,31 @@
                     <div class="col-md-6 p-4">
                         <label class="me-3">Estado de la higuiene bucal:</label>
                         <div class="row mt-3">
-                        <div class="col-md-3">
-                        <label for="estadoBucalMuyBueno">Muy bueno</label>
-                        <input class="form-check-input" type="radio" name="estadoBucal"
-                            id="estadoBucalMuyBueno">
+                            <div class="col-md-3">
+                                <label for="estadoBucalMuyBueno">Muy bueno</label>
+                                <input class="form-check-input" type="radio" name="estadoBucal"
+                                    id="estadoBucalMuyBueno">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="estadoBucalBueno">Bueno</label>
+                                <input class="form-check-input" type="radio" name="estadoBucal" id="estadoBucalBueno">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="estadoBucalDef">Deficiente</label>
+                                <input class="form-check-input" type="radio" name="estadoBucal" id="estadoBucalDef">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="estadoBucalMalo">Malo</label>
+                                <input class="form-check-input" type="radio" name="estadoBucal" id="estadoBucalMalo">
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                        <label for="estadoBucalBueno">Bueno</label>
-                        <input class="form-check-input" type="radio" name="estadoBucal"
-                            id="estadoBucalBueno">
-                        </div>
-                        <div class="col-md-3">
-                        <label for="estadoBucalDef">Deficiente</label>
-                        <input class="form-check-input" type="radio" name="estadoBucal"
-                            id="estadoBucalDef">
-                        </div>
-                        <div class="col-md-3">
-                        <label for="estadoBucalMalo">Malo</label>
-                        <input class="form-check-input" type="radio" name="estadoBucal"
-                            id="estadoBucalMalo">
-                        </div>
-                        </div>    
                     </div>
 
                     <div class="text-center mt-3">
-                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#declaracionJurada')" class="btn btn-secondary" />
-                        <input type="button" id="siguiente" value="Siguiente"
-                        (click)="nextTab('#tabOdontograma')" class="btn btn-primary" />
+                        <input type="button" id="anterior" value="Anterior" (click)="nextTab('#declaracionJurada')"
+                            class="btn btn-secondary" />
+                        <input type="button" id="siguiente" value="Siguiente" (click)="nextTab('#tabOdontograma')"
+                            class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -1081,16 +1092,16 @@
                         <canvas id="canvas6" class="position-absolute z-2"></canvas>
                     </div>
                     <div class="col-2">
-                        <input type="radio" class="btn-check" name="opcionColor" id="inputColorAzul"
-                            autocomplete="off" checked>
+                        <input type="radio" class="btn-check" name="opcionColor" id="inputColorAzul" autocomplete="off"
+                            checked>
                         <label class="btn btn-outline-primary" for="inputColorAzul">Azul</label>
-                        <input type="radio" class="btn-check" name="opcionColor" id="inputColorRojo"
-                            autocomplete="off">
+                        <input type="radio" class="btn-check" name="opcionColor" id="inputColorRojo" autocomplete="off">
                         <label class="btn btn-outline-danger" for="inputColorRojo">Rojo</label>
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    <input type="button" id="anterior" value="Anterior" (click)="nextTab('#declaracionJurada1')" class="btn btn-secondary" />
+                    <input type="button" id="anterior" value="Anterior" (click)="nextTab('#declaracionJurada1')"
+                        class="btn btn-secondary" />
                 </div>
             </div>
         </div>
