@@ -30,12 +30,13 @@ export class DataTableComponent implements OnInit{
         pageLength: 5,
         autoWidth: false,
         columnDefs: [
-          { width: "5%", targets: 0},
+          { width: "5%", targets: 0, visible: false },
           { width: "10%", targets: 1},
           { width: "10%", targets: 2},
           { width: "10%", targets: 3},
-          { width: "10%", targets: 4},
-          { width: "5%", targets: 5}
+          { width: "15%", targets: 4},
+          { width: "10%", targets: 5},
+          { width: "10%", targets: 6}
 
         ],
         lengthMenu: [2, 5, 10, 25, 50],
@@ -69,6 +70,7 @@ export class DataTableComponent implements OnInit{
     this.pacienteService.findAll().subscribe(pacientes => {
       this.pacientes = pacientes; // Asigna los pacientes a la variable
       this.dtTrigger.next(null);
+      console.log(this.pacientes);
       
     });
   }

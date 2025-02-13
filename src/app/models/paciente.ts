@@ -1,3 +1,4 @@
+import { Domicilio } from "./domicilio";
 import { Imagen } from "./imagen";
 
 export class Paciente {
@@ -7,7 +8,9 @@ export class Paciente {
     fechaNacimiento!: Date;
     telefono!: string;
     nacionalidad!: string;
-    localidad!: string;
+    domicilio!: Domicilio;
     dni!: number;
     imagenes!: Array<Imagen>;
+
+    
 }

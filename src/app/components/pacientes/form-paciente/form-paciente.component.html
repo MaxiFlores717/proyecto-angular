@@ -61,32 +61,37 @@
                     </div>
                     <h4 class="mb-3 fw-bold mt-3">Domicilio</h4>
                     <hr>
-                    <!--
-                    <div class="col-md-5 mb-3">
+                    
+                    <div class="col-md-5 mb-3" *ngIf="paciente?.domicilio">
                         <label for="inputCalle" class="form-label">Calle</label>
                         <input type="text" placeholder="calle" class="form-control" id="inputCalle"
-                            th:field="*{domicilio.calle}">
+                        [(ngModel)]="paciente.domicilio.calle" name="calle">
+
                     </div>
-                    <div class="col-md-2 mb-3">
+                    <div class="col-md-2 mb-3" *ngIf="paciente?.domicilio">
                         <label for="inputNumero" class="form-label">Numero</label>
                         <input type="number" placeholder="1122" class="form-control" id="inputNumero"
-                            th:field="*{domicilio.nroCalle}">
+                        [(ngModel)]="paciente.domicilio.nroCalle" name="nroCalle">
                     </div>
-                    <div class="col-md-2 mb-3">
+                    <div class="col-md-2 mb-3" *ngIf="paciente?.domicilio">
                         <label for="inputNumero" class="form-label">Barrio: </label>
                         <input type="text" placeholder="ej: Los Perales" class="form-control" id="inputNumero"
-                            th:field="*{domicilio.barrio}">
+                        [(ngModel)]="paciente.domicilio.barrio" name="barrio">
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3" *ngIf="paciente?.domicilio">
                         <label for="inputLocalidad" class="form-label">Localidad</label>
+                        <input type="text" class="form-control" id="inputLocalidad"
+                        [(ngModel)]="paciente.domicilio.localidad" name="localidad">
+                        
+                        <!--
                         <select id="inputLocalidad" class="form-select" name="localidad"
                             th:field="*{domicilio.localidad}">
                             <option th:each="localidad : ${listaLocalidad}" th:value="${localidad}"
                                 th:text="${localidad}">
                             </option>
                         </select>
+                        -->
                     </div>
- -->
                     
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Guardar</button>

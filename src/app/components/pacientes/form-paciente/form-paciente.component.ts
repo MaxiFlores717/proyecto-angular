@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, AfterViewInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
 import { Paciente } from '../../../models/paciente';
 import { PacienteService } from '../../../services/paciente.service';
+import { Domicilio } from '../../../models/domicilio';
 declare var $: any;
 
 @Component({
   selector: 'app-form-paciente',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './form-paciente.component.html',
   styleUrl: './form-paciente.component.css'
 })
@@ -434,15 +435,30 @@ export class FormPacienteComponent implements AfterViewInit {
     fechaNacimiento: new Date(),
     telefono: '',
     nacionalidad: '',
-    localidad: '',
+    domicilio: {
+      id: 0,
+      calle: '',
+      nroCalle: 0,
+      barrio: '',
+      localidad: '',
+    },
     imagenes: [],
   };
 
+  pacienteForm!: FormGroup;
+
+  constructor(private fb: FormBuilder, private pacienteService: PacienteService) {}
   @Output() newPacienteEvent = new EventEmitter();
 
   pacientes: Paciente[]=[];
+  
+  ngOnInit() {
+    this.paciente.domicilio = new Domicilio();
+  }
+  
 
   onSubmit(): void {
+    
     this.newPacienteEvent.emit(this.paciente);
 
 

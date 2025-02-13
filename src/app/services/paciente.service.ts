@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { Paciente } from '../models/paciente';
 import { HttpClient } from '@angular/common/http';
+import { Domicilio } from '../models/domicilio';
+import { DomicilioService } from './domicilio.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PacienteService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private domicilioService: DomicilioService) { }
 
   findAll(): Observable<Paciente[]> {
 
@@ -16,8 +18,15 @@ export class PacienteService {
       map((response: any) => response._embedded.pacientes as Paciente[]),
     );
   }
-  create(paciente: Paciente): Observable<Paciente> {
   
-    return this.http.post<Paciente>('http://localhost:8080/pacientes',paciente);
+  create(paciente: Paciente): Observable<Paciente> {
+    return this.domicilioService.create(paciente.domicilio).pipe(
+      switchMap(domicilioNuevo => {
+        paciente.domicilio = domicilioNuevo; // Asignamos el domicilio ya guardado
+        return this.http.post<Paciente>('http://localhost:8080/pacientes', paciente);
+      })
+    );
+  
+  
   }
 }
