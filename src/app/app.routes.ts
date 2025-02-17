@@ -7,7 +7,7 @@ import { DataTableComponent } from './components/pacientes/data-table/data-table
 import { InformacionPacienteComponent } from './components/pacientes/informacion-paciente/informacion-paciente.component';
 
 export const routes: Routes = [
-    { path: 'formPaciente', component: PacientesComponent },
+    { path: 'formPaciente', component: FormPacienteComponent },
     { path: 'home', component: HomeComponent },
     { path: 'pacientes', component: DataTableComponent },
     { path: 'informacionPacientes', component: InformacionPacienteComponent }

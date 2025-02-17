@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
 import { Paciente } from '../../../models/paciente';
 import { PacienteService } from '../../../services/paciente.service';
+import { Domicilio } from '../../../models/domicilio';
+import { DomicilioService } from '../../../services/domicilio.service';
+import { HttpClient } from '@angular/common/http';
 declare var $: any;
 
 @Component({
@@ -13,7 +16,7 @@ declare var $: any;
   templateUrl: './form-paciente.component.html',
   styleUrl: './form-paciente.component.css'
 })
-export class FormPacienteComponent implements AfterViewInit {
+export class FormPacienteComponent implements AfterViewInit, OnInit {
 
   /*------------------------- Variables ----------------------------------------*/
   tieneHermanos: string = '';
@@ -62,7 +65,7 @@ export class FormPacienteComponent implements AfterViewInit {
   fondoAzulEncias: boolean = false;
   fondoAzulPus: boolean = false;
   fondoAzulCaraHinchada: boolean = false;
-  
+
 
   /*------------------------- Preguntas ----------------------------------------*/
 
@@ -425,29 +428,154 @@ export class FormPacienteComponent implements AfterViewInit {
       console.error('Elemento no encontrado:', tabId);
     }
   }
+  /*
+    paciente: any;
+    domicilio: any;
+  
+    domicilios: Domicilio[] = [];
+  
+    constructor(private pacienteService: PacienteService, private domicilioService: DomicilioService) {
+      this.inicializarDomicilio();
+      this.inicializarPaciente();
+      this.domicilioService.findAll().subscribe(domicilios => this.domicilios = domicilios);
+    }
+  
+    inicializarPaciente() {
+      this.paciente = {
+        nombre: '',
+        apellido: '',
+        dni: '',
+        telefono: '',
+        nacionalidad: '',
+        fechaNacimiento: '',
+        domicilio: new Domicilio
+      };
+    }
+  
+    inicializarDomicilio() {
+      this.domicilio = {
+        calle: '',
+        nroCalle: 0,
+        barrio: '',
+        localidad: ''
+      };
+    }
+  
+    setDomicilio() {
+      this.paciente.domicilio = { ...this.domicilio };
+      console.log(this.paciente.domicilio);
+    }
+    
+    onSubmit(form: any): void {
+      if (form.valid) {
+        this.domicilioService.create(this.domicilio).subscribe(domicilioNew => {
+          this.setDomicilio();
+          
+          console.log(this.paciente);
+        });
+          this.pacienteService.create(this.paciente).subscribe(() => {
+            alert('Paciente guardado');
+  
+            form.resetForm();
+            this.inicializarPaciente();
+            this.inicializarDomicilio();
+          });
+        
+      } else {
+        alert('Completa todos los campos');
+      }
+    }
+      */
 
-  @Input() paciente: Paciente = {
-    id: 0,
+  pacienteReal = new Paciente();
+  domicilioReal = new Domicilio();
+
+
+  paciente = {
     nombre: '',
     apellido: '',
-    dni: 0,
-    fechaNacimiento: new Date(),
+    dni: null,
     telefono: '',
     nacionalidad: '',
+    fechanacimiento: null,
+    imagenes: []
+  }
+
+  domicilio = {
+    calle: '',
+    nrocalle: 0,
+    barrio: '',
     localidad: '',
-    imagenes: [],
-  };
+    paciente: this.paciente
+  }
 
-  @Output() newPacienteEvent = new EventEmitter();
-
-  pacientes: Paciente[]=[];
-
-  onSubmit(): void {
-    this.newPacienteEvent.emit(this.paciente);
+  pacientes: Paciente[] = [];
 
 
-   /* this.pacienteService.create(this.paciente).subscribe(pacienteNew => {
-      this.pacientes.push({ ...pacienteNew});
-    })*/
+  constructor(private http: HttpClient, private domicilioService: DomicilioService, private pacienteService: PacienteService) {
+    this.pacientes = new Array<Paciente>;
+
+
+  }
+
+  ngOnInit() {
+    this.pacienteService.findAll().subscribe(pacientes => this.pacientes = pacientes);
+  }
+
+  guardarPaciente() {
+
+    this.domicilioReal.barrio = this.domicilio.barrio;
+    this.domicilioReal.calle = this.domicilio.calle;
+    this.domicilioReal.localidad = this.domicilio.localidad;
+    this.domicilioReal.nrocalle = this.domicilio.nrocalle;
+
+
+    this.pacienteReal.apellido = this.paciente.apellido;
+    this.pacienteReal.nombre = this.paciente.nombre;
+
+    this.pacienteService.create(this.pacienteReal).subscribe(pacienteNew => {
+      console.log('Paciente guardado con éxito', pacienteNew);
+
+      // Ahora que el paciente tiene un ID, lo asignamos al domicilio
+
+
+      this.pacientes = [...this.pacientes, pacienteNew];
+
+      const pacienteId = pacienteNew.id
+
+      console.log("🔍 ID enviado a la API:", pacienteId, typeof pacienteId);
+
+
+      this.http.post(`http://localhost:8080/api/domicilios/${pacienteId}`, this.domicilioReal)
+        .subscribe(response => {
+          console.log('Domicilio guardado', response);
+        });
+
+
+    });
+
+    /*
+    this.pacienteReal.apellido = this.paciente.apellido;
+    this.http.post<any>('http://localhost:8080/pacientes', this.pacienteReal)
+    .subscribe(response => {
+
+      console.log(response.id)
+      this.domicilioReal.paciente = response;
+      console.log(this.domicilioReal)
+      
+      this.domicilioReal.barrio= this.domicilio.barrio;
+      // Ahora guardamos el domicilio
+      this.http.post('http://localhost:8080/domicilios', this.domicilioReal)
+        .subscribe(response => {
+          console.log('Domicilio guardado con éxito', response);
+          alert('Domicilio guardado con éxito');
+        }, error => {
+          console.error('Error al guardar el domicilio', error);
+        });
+
+    }, error => {
+      console.error('Error al guardar el paciente', error);
+    });
+    */
   }
 }

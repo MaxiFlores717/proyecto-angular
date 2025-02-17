@@ -6,6 +6,8 @@ import { PacienteService } from '../../../services/paciente.service';
 import DataTable from 'datatables.net-dt';
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
+import { DomicilioService } from '../../../services/domicilio.service';
+import { Domicilio } from '../../../models/domicilio';
 
 @Component({
   selector: 'app-data-table',
@@ -16,11 +18,13 @@ import { DataTablesModule } from 'angular-datatables';
 })
 export class DataTableComponent implements OnInit{
   pacientes: Paciente[]=[];
+  domicilios: Domicilio[]=[];
+
 
   dtOptions: Config={};
   dtTrigger: Subject<any>= new Subject<any>();
 
-  constructor(private pacienteService: PacienteService){
+  constructor(private pacienteService: PacienteService, private domicilioService: DomicilioService){
 
   }
   ngOnInit(): void {
@@ -34,8 +38,7 @@ export class DataTableComponent implements OnInit{
           { width: "10%", targets: 1},
           { width: "10%", targets: 2},
           { width: "10%", targets: 3},
-          { width: "10%", targets: 4},
-          { width: "5%", targets: 5}
+          { width: "10%", targets: 4}
 
         ],
         lengthMenu: [2, 5, 10, 25, 50],
@@ -66,11 +69,13 @@ export class DataTableComponent implements OnInit{
   }
 
   cargarPaciente(): void {
-    this.pacienteService.findAll().subscribe(pacientes => {
-      this.pacientes = pacientes; // Asigna los pacientes a la variable
+
+    this.domicilioService.findAll().subscribe(domicilios => {
+      this.domicilios = domicilios; // Asigna los pacientes a la variable
       this.dtTrigger.next(null);
       
     });
+
   }
   
 

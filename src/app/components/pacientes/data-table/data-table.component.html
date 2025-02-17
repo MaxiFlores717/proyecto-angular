@@ -1,22 +1,21 @@
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered table-responsive">
-    <thead>
-        <tr class="bg-info">
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Telefono</th>
-          <th>Localidad</th>
-          <th>Dni</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider  bg-info-subtle ">
-        <tr *ngFor="let p of pacientes">
-          <td>{{ p.id }}</td>
-          <td>{{ p.nombre }}</td>
-          <td>{{ p.apellido }}</td>
-          <td>{{ p.telefono }}</td>
-          <td>{{ p.localidad }}</td>
-          <td>{{ p.dni }}</td>
-        </tr>
-      </tbody>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+  class="row-border hover table-bordered table-responsive">
+  <thead>
+    <tr class="bg-info">
+      <th>Calle</th>
+      <th>Número</th>
+      <th>Ciudad</th>
+      <th>Nombre del Paciente</th>
+      <th>Apellido del Paciente</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider  bg-info-subtle ">
+    <tr *ngFor="let domicilio of domicilios">
+      <td>{{ domicilio.calle }}</td>
+      <td>{{ domicilio.nrocalle }}</td>
+      <td>{{ domicilio.localidad }}</td>
+      <td>{{ domicilio.id_paciente }}</td>
+      <td>{{ domicilio.nrocalle }}</td>
+    </tr>
+  </tbody>
 </table>
