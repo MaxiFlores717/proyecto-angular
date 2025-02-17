@@ -1,0 +1,10 @@
+.fondo-azul{
+    background-color:#0c449e; 
+    color: white;
+    transition: background-color 1s ease-in-out;
+ }
+
+ .sin-fondo{
+     background: transparent;
+     transition: background-color 1s ease-in-out;
+ }

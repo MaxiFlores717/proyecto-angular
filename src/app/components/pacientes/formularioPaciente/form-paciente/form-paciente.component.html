@@ -1,0 +1,22 @@
+<div class="row">
+
+    <h3 class="text-body-primary fw-bold text-center display-5 p-3">Formulario Paciente</h3>
+</div>
+<!-- Nav tabs -->
+<nav class="nav nav-tabs" id="nav-tab" role="tablist">
+    <!-- <button class="nav-link active bg-primary text-white" data-bs-toggle="tab" data-bs-target="#datosPersonales"
+        type="button" role="tab" aria-selected="true">Datos
+        Personales</button> -->
+    <button class="nav-link active bg-primary text-white" routerLink="/formPaciente/datosPersonales" routerLinkActive="active">Datos
+    Personales</button>    
+    <button class="nav-link bg-primary text-white" routerLink="/formPaciente/imagenes" routerLinkActive="active">Imágenes</button>
+    <button class="nav-link bg-primary text-white" routerLink="/formPaciente/obraSocial" routerLinkActive="active">Obra Social</button>
+    <button class="nav-link bg-primary text-white" routerLink="/formPaciente/historiaMedica" routerLinkActive="active">Historía Clínica Médica</button>
+    <button class="nav-link bg-primary text-white" routerLink="/formPaciente/historiaOdontologica" routerLinkActive="active">Historía Clínica Odontológica</button>
+    <button class="nav-link bg-primary text-white" routerLink="/formPaciente/odontograma" routerLinkActive="active">Odontograma</button>
+</nav>
+<div class="registro border border-primary">
+    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">        
+        <router-outlet></router-outlet>
+    </form>
+</div>

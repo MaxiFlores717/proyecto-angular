@@ -1,0 +1,73 @@
+            <div class="row p-4">
+                <div class="col-md-6 mb-3">
+                    <label for="inputNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre" [(ngModel)]="pacienteGuardar.nombre" name="nombre">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputApellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="inputApellido" [(ngModel)]="pacienteGuardar.apellido" name="apellido">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="inputDni" class="form-label">DNI</label>
+                    <input type="text" placeholder="11222333" class="form-control" id="inputDni"
+                        [(ngModel)]="pacienteGuardar.dni" name="dni">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="inputTelefono" class="form-label">Telefono</label>
+                    <input type="tel" class="form-control" id="inpuTelefono" placeholder="3885872108"
+                        [(ngModel)]="pacienteGuardar.telefono" name="telefono">
+                </div>
+                <div class="col-md-4">
+                    <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                    <input type="text" class="form-control" id="inpuTelefono" 
+                        [(ngModel)]="pacienteGuardar.nacionalidad" name="nacionalidad">
+                    <!--
+                    <select id="nacionalidad" name="nacionalidad" class="form-select">
+                        <option th:each="nacionalidad : ${listaNacionalidad}" th:value="${nacionalidad}"
+                            th:text="${nacionalidad}">
+                        </option>
+                    </select>
+                    -->
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="inputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="inputFechaNacimiento"
+                        [(ngModel)]="pacienteGuardar.fechaNacimiento" name="fechaNacimiento">
+                </div>
+                <h4 class="mb-3 fw-bold mt-3">Domicilio</h4>
+                <hr>
+                <!--
+                <div class="col-md-5 mb-3">
+                    <label for="inputCalle" class="form-label">Calle</label>
+                    <input type="text" placeholder="calle" class="form-control" id="inputCalle"
+                        th:field="*{domicilio.calle}">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="inputNumero" class="form-label">Numero</label>
+                    <input type="number" placeholder="1122" class="form-control" id="inputNumero"
+                        th:field="*{domicilio.nroCalle}">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="inputNumero" class="form-label">Barrio: </label>
+                    <input type="text" placeholder="ej: Los Perales" class="form-control" id="inputNumero"
+                        th:field="*{domicilio.barrio}">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputLocalidad" class="form-label">Localidad</label>
+                    <select id="inputLocalidad" class="form-select" name="localidad"
+                        th:field="*{domicilio.localidad}">
+                        <option th:each="localidad : ${listaLocalidad}" th:value="${localidad}"
+                            th:text="${localidad}">
+                        </option>
+                    </select>
+                </div>
+-->
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" >Guardar</button>
+                    <input type="button" id="siguiente" value="Siguiente" routerLink="/formPaciente/imagenes" routerLinkActive="active"
+                        class="btn btn-primary" />
+                </div>
+            </div>
+
+        

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../../models/paciente';
 import { PacienteService } from '../../services/paciente.service';
-import { FormPacienteComponent } from './form-paciente/form-paciente.component';
+import { FormPacienteComponent } from './formularioPaciente/form-paciente/form-paciente.component';
 
 @Component({
   selector: 'app-pacientes',

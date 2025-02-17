@@ -1,0 +1,49 @@
+
+<div class="container p-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-3 fw-bold mt-3">Gestión de Imágenes</h4>
+
+        <button type="button" id="agregar-imagen" class="btn btn-primary" (click)="agregarImagen()">
+            <i class="bi bi-plus-lg"></i> Agregar Imágen
+        </button>
+
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <label for="imagen" class="form-label">Imágen de Usuario</label>
+                    <input type="file" (change)="guardarImagen($event, 0)" class="form-control" id="imagen">                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-4">
+        <h4 class="mb-3 fw-bold mt-3">Fotos adicionales del paciente:</h4>
+        <hr>
+        <div id="contenedor-imagenes" class="row justify-content-center g-3">
+
+            <div class="col-md-4" *ngFor="let imagen of imagenes; let i = index">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <label for="imagen{{i}}" class="form-label">Fotos
+                            inicial</label>
+                        <img *ngIf="imagen.url" [src]="imagen.url" class="img-thumbnail" alt="Imagen del paciente">
+                        <input type="file" name="files" class="form-control" id="imagen{{i}}" (change)="guardarImagen($event, i)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary" (click)="onSave()">Guardar</button>
+        <input type="button" id="anterior" value="Anterior" routerLink="/formPaciente/datosPersonales" routerLinkActive="active"
+            class="btn btn-secondary" />
+        <input type="button" id="siguiente" value="Siguiente" routerLink="/formPaciente/obraSocial" routerLinkActive="active"
+            class="btn btn-primary" />
+    </div>
+</div>

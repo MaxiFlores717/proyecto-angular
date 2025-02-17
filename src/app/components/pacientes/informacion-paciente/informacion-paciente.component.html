@@ -37,55 +37,30 @@
                     <div class="col-md-4 d-flex align-items-center justify-content-center">
                         <div class="ratio ratio-1x1 w-75">
                             
-                            <img class="img-thumbnail rounded w-100 h-100"
+                            <!-- <img class="img-thumbnail rounded w-100 h-100"
                                  th:if="${#lists.size(pacienteEncontrado.imagenes) > 0}"
                                  th:src="@{'/Recursos/' + ${pacienteEncontrado.imagenes[0].url}}"
                                  alt="Foto del paciente"
-                                 style="object-fit: cover;">
+                                 style="object-fit: cover;"> -->
                         </div>
                     </div>
                     
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title bg-dark text-white fw-bold p-2">Información del Paciente</h5>
-                            <table class="table table-bordered table-striped">
-                                <tbody>
-                                    <tr>
-                                        <th class="table-dark">Nombre</th>
-                                        <td th:text="${pacienteEncontrado.nombre}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">Apellido</th>
-                                        <td th:text="${pacienteEncontrado.apellido}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">Edad</th>
-                                        <td th:text="${edadCalculada}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">Teléfono</th>
-                                        <td th:text="${pacienteEncontrado.telefono}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">Fecha de Nacimiento</th>
-                                        <td th:text="${pacienteEncontrado.fechaNacimiento}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">Nacionalidad</th>
-                                        <td th:text="${pacienteEncontrado.nacionalidad}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">DNI</th>
-                                        <td th:text="${pacienteEncontrado.dni}"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="table-dark">Domicilio</th>
-                                        <td
-                                            th:text="${pacienteEncontrado.domicilio.calle + ', ' + pacienteEncontrado.domicilio.nroCalle + ', ' + pacienteEncontrado.domicilio.barrio + ', ' + pacienteEncontrado.domicilio.localidad}">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div *ngIf="pacienteEncontrado">
+                              <h2>Detalles del Paciente</h2>
+                              <p><strong>Id:</strong> {{ pacienteEncontrado.id }}</p>
+                              <p><strong>Nombre:</strong> {{ pacienteEncontrado.nombre }}</p>
+                              <p><strong>Apellido:</strong> {{ pacienteEncontrado.apellido }}</p>
+                              <p><strong>Teléfono:</strong> {{ pacienteEncontrado.telefono }}</p>
+                              <p><strong>Localidad:</strong> {{ pacienteEncontrado.localidad }}</p>
+                              <p><strong>DNI:</strong> {{ pacienteEncontrado.dni }}</p>
+                            </div>
+                            <div *ngIf="!pacienteEncontrado">
+                              <p>No se encontraron datos para el paciente con DNI: {{ pacienteDni }}</p>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="card-footer text-muted text-center">

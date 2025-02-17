@@ -6,6 +6,7 @@ import { PacienteService } from '../../../services/paciente.service';
 import DataTable from 'datatables.net-dt';
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-table',
@@ -20,7 +21,7 @@ export class DataTableComponent implements OnInit{
   dtOptions: Config={};
   dtTrigger: Subject<any>= new Subject<any>();
 
-  constructor(private pacienteService: PacienteService){
+  constructor(private pacienteService: PacienteService, private router: Router){
 
   }
   ngOnInit(): void {
@@ -72,6 +73,8 @@ export class DataTableComponent implements OnInit{
       
     });
   }
-  
 
-}
+  seleccionarPacientePorDni(paciente: Paciente): void{
+        this.router.navigate(["/paciente/informacionPacientes",paciente.dni]);
+      } 
+  }
