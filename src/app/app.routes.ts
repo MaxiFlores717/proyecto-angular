@@ -5,7 +5,7 @@ import { PacientesComponent } from './components/pacientes/pacientes.component';
 
 import { DataTableComponent } from './components/pacientes/data-table/data-table.component';
 import { InformacionPacienteComponent } from './components/pacientes/informacion-paciente/informacion-paciente.component';
-import { DatosPersonalesComponent } from './components/pacientes/formularioPaciente/datos-personales/datos-personales.component';
+import { DatosPersonalesComponent } from './components/pacientes/formularioPaciente/form-paciente/datos-personales/datos-personales.component';
 import { ImagenesComponent } from './components/pacientes/formularioPaciente/imagenes/imagenes.component';
 import { ObraSocialComponent } from './components/pacientes/formularioPaciente/obra-social/obra-social.component';
 import { HistoriaMedicaComponent } from './components/pacientes/formularioPaciente/historia-medica/historia-medica.component';

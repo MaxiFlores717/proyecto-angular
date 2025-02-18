@@ -4,12 +4,11 @@ export class Paciente {
     id!: number;
     nombre!: string;
     apellido!: string;
-    fechaNacimiento!: Date;
+    fechanacimiento!: Date;
     telefono!: string;
     nacionalidad!: string;
-    localidad!: string;
     dni!: number;
-    imagenes: Imagen[] = [];
+    imagenes?: Array<Imagen>;
 
     // public getId(): number {
     //     return this.id;

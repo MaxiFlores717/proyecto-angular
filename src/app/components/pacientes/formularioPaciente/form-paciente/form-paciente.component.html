@@ -16,7 +16,5 @@
     <button class="nav-link bg-primary text-white" routerLink="/formPaciente/odontograma" routerLinkActive="active">Odontograma</button>
 </nav>
 <div class="registro border border-primary">
-    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">        
-        <router-outlet></router-outlet>
-    </form>
+        <app-datos-personales (newPacienteEvent)="addPaciente($event)"></app-datos-personales>
 </div>

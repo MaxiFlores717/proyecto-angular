@@ -1,4 +1,6 @@
-            <div class="row p-4">
+<form (ngSubmit)="onSubmit()" enctype="multipart/form-data">        
+
+<div class="row p-4">
                 <div class="col-md-6 mb-3">
                     <label for="inputNombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="inputNombre" [(ngModel)]="pacienteGuardar.nombre" name="nombre">
@@ -32,36 +34,39 @@
                 <div class="col-md-4 mb-3">
                     <label for="inputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="inputFechaNacimiento"
-                        [(ngModel)]="pacienteGuardar.fechaNacimiento" name="fechaNacimiento">
+                        [(ngModel)]="pacienteGuardar.fechanacimiento" name="fechaNacimiento">
                 </div>
                 <h4 class="mb-3 fw-bold mt-3">Domicilio</h4>
                 <hr>
-                <!--
+                
                 <div class="col-md-5 mb-3">
                     <label for="inputCalle" class="form-label">Calle</label>
                     <input type="text" placeholder="calle" class="form-control" id="inputCalle"
-                        th:field="*{domicilio.calle}">
+                    [(ngModel)]="domicilioGuardar.calle" name="fechaNacimiento">
                 </div>
                 <div class="col-md-2 mb-3">
                     <label for="inputNumero" class="form-label">Numero</label>
                     <input type="number" placeholder="1122" class="form-control" id="inputNumero"
-                        th:field="*{domicilio.nroCalle}">
+                    [(ngModel)]="domicilioGuardar.nrocalle" name="nrocalle">
                 </div>
                 <div class="col-md-2 mb-3">
                     <label for="inputNumero" class="form-label">Barrio: </label>
                     <input type="text" placeholder="ej: Los Perales" class="form-control" id="inputNumero"
-                        th:field="*{domicilio.barrio}">
+                    [(ngModel)]="domicilioGuardar.barrio" name="barrio">
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="inputLocalidad" class="form-label">Localidad</label>
+                    <input type="text" placeholder="ej: La quiaca" class="form-control" id="inputLocalidad"
+                    [(ngModel)]="domicilioGuardar.localidad" name="localidad">
+                        <!--
                     <select id="inputLocalidad" class="form-select" name="localidad"
                         th:field="*{domicilio.localidad}">
                         <option th:each="localidad : ${listaLocalidad}" th:value="${localidad}"
                             th:text="${localidad}">
                         </option>
                     </select>
+                -->
                 </div>
--->
                 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary" >Guardar</button>
@@ -70,4 +75,4 @@
                 </div>
             </div>
 
-        
+</form>
