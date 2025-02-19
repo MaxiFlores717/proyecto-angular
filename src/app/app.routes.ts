@@ -15,7 +15,7 @@ import { OdontogramaComponent } from './components/pacientes/formularioPaciente/
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'pacientes', component: DataTableComponent },
-    { path: 'paciente/informacionPacientes/:dni', component: InformacionPacienteComponent },
+    { path: 'paciente/informacionPacientes/:id', component: InformacionPacienteComponent },
     //Formulario del Paciente
     { path: 'formPaciente', component: FormPacienteComponent, 
         children: [
@@ -28,6 +28,6 @@ export const routes: Routes = [
           { path: '', redirectTo: 'datosPersonales', pathMatch: 'full' },
         ] 
       },
-      { path: '', redirectTo: '/formPaciente', pathMatch: 'full' },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
        
 ];

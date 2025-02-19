@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PacienteService {
-  private url = 'http://localhost:8080';
+  private url = 'http://localhost:8080/pacientes';
 
   
   private paciente: Paciente = new Paciente();
@@ -33,8 +33,8 @@ export class PacienteService {
     return this.http.post<Paciente>('http://localhost:8080/pacientes',paciente);
   }
 
-  findByDni(dni: number): Observable<Paciente>{
-    return this.http.get<Paciente>(`${this.url}/paciente/informacionPaciente/${dni}`);
+  findById(id: number): Observable<Paciente>{
+    return this.http.get<Paciente>(`${this.url}/${id}`);
   }
 }
 

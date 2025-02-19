@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody class="table-group-divider  bg-info-subtle ">
-        <tr *ngFor="let p of pacientes" (click)="seleccionarPacientePorDni(p)">
+        <tr *ngFor="let p of pacientes" (click)="seleccionarPacientePorId(p)">
           <td>{{ p.id }} </td>
           <td>{{ p.nombre }} </td>
           <td>{{ p.apellido }} </td>

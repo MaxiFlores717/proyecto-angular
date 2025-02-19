@@ -74,7 +74,7 @@ export class DataTableComponent implements OnInit{
     });
   }
 
-  seleccionarPacientePorDni(paciente: Paciente): void{
-        this.router.navigate(["/paciente/informacionPacientes",paciente.dni]);
+  seleccionarPacientePorId(paciente: Paciente): void{
+        this.router.navigate(["/paciente/informacionPacientes",paciente.id]);
       } 
   }
