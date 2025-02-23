@@ -1,5 +1,3 @@
-<form (ngSubmit)="onSubmit()" enctype="multipart/form-data">        
-
 <div class="row p-4">
                 <div class="col-md-6 mb-3">
                     <label for="inputNombre" class="form-label">Nombre</label>
@@ -50,14 +48,14 @@
                     [(ngModel)]="domicilioGuardar.nrocalle" name="nrocalle">
                 </div>
                 <div class="col-md-2 mb-3">
-                    <label for="inputNumero" class="form-label">Barrio: </label>
-                    <input type="text" placeholder="ej: Los Perales" class="form-control" id="inputNumero"
+                    <label for="inputBarrio" class="form-label">Barrio: </label>
+                    <input type="text" placeholder="ej: Los Perales" class="form-control" id="inputBarrio"
                     [(ngModel)]="domicilioGuardar.barrio" name="barrio">
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="inputLocalidad" class="form-label">Localidad</label>
                     <input type="text" placeholder="ej: La quiaca" class="form-control" id="inputLocalidad"
-                    [(ngModel)]="domicilioGuardar.localidad" name="localidad">
+                    [(ngModel)]="domicilioGuardar.localidad" name="localidad" (ngModelChange)="actualizarDomicilio()">
                         <!--
                     <select id="inputLocalidad" class="form-select" name="localidad"
                         th:field="*{domicilio.localidad}">
@@ -68,11 +66,3 @@
                 -->
                 </div>
                 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary" >Guardar</button>
-                    <input type="button" id="siguiente" value="Siguiente" routerLink="/formPaciente/imagenes" routerLinkActive="active"
-                        class="btn btn-primary" />
-                </div>
-            </div>
-
-</form>

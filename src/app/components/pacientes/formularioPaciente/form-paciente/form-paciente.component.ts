@@ -22,6 +22,9 @@ export class FormPacienteComponent{
 
   pacientes: Paciente[] = [];
 
+  domicilioGuardar: Domicilio = new Domicilio();
+  pacienteGuardar: Paciente = new Paciente();
+
 
   constructor(private http: HttpClient, private domicilioService: DomicilioService, private pacienteService: PacienteService) {
     this.pacientes = new Array<Paciente>;
@@ -34,8 +37,8 @@ export class FormPacienteComponent{
   }
 
 
-  addPaciente(domicilio: Domicilio): void {
-    this.pacienteService.create(domicilio.paciente).subscribe(pacienteNew => {
+  onSubmit() {
+    this.pacienteService.create(this.domicilioGuardar.paciente).subscribe(pacienteNew => {
       console.log('Paciente guardado con éxito', pacienteNew);
 
       // Ahora que el paciente tiene un ID, lo asignamos al domicilio
@@ -45,15 +48,32 @@ export class FormPacienteComponent{
 
       const pacienteId = pacienteNew.id
 
-      console.log("🔍 ID enviado a la API:", pacienteId, typeof pacienteId);
+      //console.log("🔍 ID enviado a la API:", pacienteId, typeof pacienteId);
 
 
-      this.http.post(`http://localhost:8080/api/domicilios/${pacienteId}`, domicilio)
-        .subscribe(response => {
-          console.log('Domicilio guardado', response);
+      this.http.post(`http://localhost:8080/api/domicilios/${pacienteId}`, this.domicilioGuardar)
+      .subscribe(response => {
+        console.log('Domicilio guardado', response);
+        
         });
 
 
     });
+  }
+
+  addDomicilio(domicilio: Domicilio): void {
+
+    this.domicilioGuardar.paciente.apellido = domicilio.paciente.apellido;
+    this.domicilioGuardar.paciente.nombre = domicilio.paciente.nombre;
+    this.domicilioGuardar.paciente.dni = domicilio.paciente.dni;
+    this.domicilioGuardar.paciente.telefono = domicilio.paciente.telefono;
+    this.domicilioGuardar.paciente.nacionalidad = domicilio.paciente.nacionalidad;
+    this.domicilioGuardar.paciente.fechanacimiento = domicilio.paciente.fechanacimiento;
+    this.domicilioGuardar.barrio = domicilio.barrio;
+    this.domicilioGuardar.calle = domicilio.calle;
+    this.domicilioGuardar.nrocalle = domicilio.nrocalle;
+    this.domicilioGuardar.localidad = domicilio.localidad;
+
+    
   }
 }
