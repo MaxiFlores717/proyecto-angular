@@ -1,14 +1,15 @@
-<div class="table-container text-center p-3">
+<div class="table-container text-center p-3" *ngIf="pacienteEncontrado">
     <div class="row align-items-center mb-4">
         <div class="col">
             <h1 class="text-primary fs-1 fw-bold">Información Paciente</h1>
         </div>
-        <!-- <div class="col text-end">
-            <a class="btn btn-danger btn-lg" th:href="@{'/paciente/informacionPaciente/' + ${pacienteEncontrado.dni}(format=pdf)}">
+        <div class="col text-end">
+            <a class="btn btn-danger btn-lg" (click)="downloadPdfPaciente()">
                 Descargar PDF
             </a>
-        </div> -->
+        </div>
     </div>
+
 
     <nav class="nav nav-tabs" id="nav-tab" role="tablist">
         <button class="nav-link active bg-primary text-white" data-bs-toggle="tab"
@@ -48,7 +49,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title bg-dark text-white fw-bold p-2">Información del Paciente</h5>
-                            <div *ngIf="pacienteEncontrado">
+                            <!-- <div *ngIf="pacienteEncontrado">
                               <h2>Detalles del Paciente</h2>
                               <p><strong>Id:</strong> {{ pacienteEncontrado.id }}</p>
                               <p><strong>Nombre:</strong> {{ pacienteEncontrado.nombre }}</p>
@@ -58,9 +59,50 @@
                               <p><strong>DNI:</strong> {{ pacienteEncontrado.dni }}</p>
                             </div>
                             <div *ngIf="!pacienteEncontrado">
-                              <p>No se encontraron datos para el paciente con DNI: {{ pacienteDni }}</p>
-                            </div>
+                              <p>No se encontraron datos para el paciente con el id: {{ pacienteId }}</p>
+                            </div> -->
                             
+                            <table class="table table-bordered table-striped">
+                              <tbody>
+                                  <tr>
+                                      <th class="table-dark">Nombre</th>
+                                      <td>{{pacienteEncontrado.nombre}}</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="table-dark">Apellido</th>
+                                      <td>{{pacienteEncontrado.apellido}}</td>
+                                  </tr>
+                                  <!-- <tr>
+                                      <th class="table-dark">Edad</th>
+                                      <td th:text="${edadCalculada}"></td>
+                                  </tr> -->
+                                  <!-- <tr>
+                                      <th class="table-dark">Teléfono</th>
+                                      <td th:text="${pacienteEncontrado.telefono}"></td>
+                                  </tr> -->
+                                  <tr>
+                                      <th class="table-dark">Fecha de Nacimiento</th>
+                                      <td>{{pacienteEncontrado.fechaNacimiento}}</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="table-dark">Nacionalidad</th>
+                                      <td>{{pacienteEncontrado.nacionalidad}}</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="table-dark">DNI</th>
+                                      <td>{{pacienteEncontrado.dni}}</td>
+                                  </tr>
+                                  <!-- <tr>
+                                      <th class="table-dark">Domicilio</th>
+                                      <td
+                                          th:text="${pacienteEncontrado.domicilio.calle + ', ' + pacienteEncontrado.domicilio.nroCalle + ', ' + pacienteEncontrado.domicilio.barrio + ', ' + pacienteEncontrado.domicilio.localidad}">
+                                      </td>
+                                  </tr> -->
+                              </tbody>
+                          </table>
+                          <div *ngIf="!pacienteEncontrado">
+                            <p>No se encontraron datos para el paciente con el id: {{ pacienteId }}</p>
+                          </div>
                         </div>
                     </div>
                     <div class="card-footer text-muted text-center">
