@@ -68,7 +68,7 @@ export class FormPacienteComponent{
     this.domicilioGuardar.paciente.dni = domicilio.paciente.dni;
     this.domicilioGuardar.paciente.telefono = domicilio.paciente.telefono;
     this.domicilioGuardar.paciente.nacionalidad = domicilio.paciente.nacionalidad;
-    this.domicilioGuardar.paciente.fechanacimiento = domicilio.paciente.fechanacimiento;
+    this.domicilioGuardar.paciente.fechaNacimiento = domicilio.paciente.fechaNacimiento;
     this.domicilioGuardar.barrio = domicilio.barrio;
     this.domicilioGuardar.calle = domicilio.calle;
     this.domicilioGuardar.nrocalle = domicilio.nrocalle;

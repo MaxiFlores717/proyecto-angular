@@ -29,7 +29,7 @@ export class DatosPersonalesComponent{
       dni: 0,
       telefono: '',
       nacionalidad: '',
-      fechanacimiento: new Date(),
+      fechaNacimiento: new Date(),
       imagenes: []
     }
   }
@@ -54,7 +54,7 @@ export class DatosPersonalesComponent{
     this.domicilio.paciente.dni = this.pacienteGuardar.dni;
     this.domicilio.paciente.telefono = this.pacienteGuardar.telefono;
     this.domicilio.paciente.nacionalidad = this.pacienteGuardar.nacionalidad;
-    this.domicilio.paciente.fechanacimiento = this.pacienteGuardar.fechanacimiento;
+    this.domicilio.paciente.fechaNacimiento = this.pacienteGuardar.fechaNacimiento;
     this.domicilio.barrio = this.domicilioGuardar.barrio;
     this.domicilio.calle = this.domicilioGuardar.calle;
     this.domicilio.nrocalle = this.domicilioGuardar.nrocalle;

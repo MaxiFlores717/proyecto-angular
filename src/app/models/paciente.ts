@@ -4,7 +4,7 @@ export class Paciente {
     id!: number;
     nombre!: string;
     apellido!: string;
-    fechanacimiento!: Date;
+    fechaNacimiento!: Date;
     telefono!: string;
     nacionalidad!: string;
     dni!: number;
