@@ -32,7 +32,7 @@ export class DatosPersonalesComponent implements OnInit{
       nombre: '',
       apellido: '',
       dni: 0,
-      fechanacimiento: new Date(),
+      fechaNacimiento: new Date(),
       telefono: '',
       nacionalidad: '',
       localidad: '',

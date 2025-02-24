@@ -16,6 +16,8 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'pacientes', component: DataTableComponent },
     { path: 'paciente/informacionPacientes/:id', component: InformacionPacienteComponent },
+    
+
     //Formulario del Paciente
     { path: 'formPaciente', component: FormPacienteComponent, 
         children: [

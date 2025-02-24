@@ -3,12 +3,13 @@
         <div class="col">
             <h1 class="text-primary fs-1 fw-bold">Información Paciente</h1>
         </div>
-        <!-- <div class="col text-end">
-            <a class="btn btn-danger btn-lg" th:href="@{'/paciente/informacionPaciente/' + ${pacienteEncontrado.dni}(format=pdf)}">
+        <div class="col text-end">
+            <a class="btn btn-danger btn-lg" (click)="downloadPdfPaciente()">
                 Descargar PDF
             </a>
-        </div> -->
+        </div>
     </div>
+
 
     <nav class="nav nav-tabs" id="nav-tab" role="tablist">
         <button class="nav-link active bg-primary text-white" data-bs-toggle="tab"
@@ -81,7 +82,7 @@
                                   </tr> -->
                                   <tr>
                                       <th class="table-dark">Fecha de Nacimiento</th>
-                                      <td>{{pacienteEncontrado.fechanacimiento}}</td>
+                                      <td>{{pacienteEncontrado.fechaNacimiento}}</td>
                                   </tr>
                                   <tr>
                                       <th class="table-dark">Nacionalidad</th>

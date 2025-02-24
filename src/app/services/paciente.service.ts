@@ -36,5 +36,8 @@ export class PacienteService {
   findById(id: number): Observable<Paciente>{
     return this.http.get<Paciente>(`${this.url}/${id}`);
   }
+  // downloadPDF(id: number): Observable<Blob>{
+  //   return this.http.get(`${this.url}/pdf/${id}`, { responseType: 'blob'});
+  // }
 }
 
