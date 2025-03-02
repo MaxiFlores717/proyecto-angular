@@ -18,6 +18,7 @@
 <div class="registro border border-primary">
     <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">        
         <app-datos-personales (domicilioChange)="addDomicilio($event)" ></app-datos-personales>
+        <!-- <router-outlet></router-outlet> -->
         <button type="submit">Enviar</button>
     </form>
 </div>

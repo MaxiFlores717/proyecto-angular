@@ -11,12 +11,13 @@ import { ObraSocialComponent } from './components/pacientes/formularioPaciente/o
 import { HistoriaMedicaComponent } from './components/pacientes/formularioPaciente/historia-medica/historia-medica.component';
 import { HistoriaOdontologicaComponent } from './components/pacientes/formularioPaciente/historia-odontologica/historia-odontologica.component';
 import { OdontogramaComponent } from './components/pacientes/formularioPaciente/odontograma/odontograma.component';
+import { PruebaPdfComponent } from './components/prueba-pdf/prueba-pdf.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'pacientes', component: DataTableComponent },
     { path: 'paciente/informacionPacientes/:id', component: InformacionPacienteComponent },
-    
+    { path: 'pruebaPdf', component: PruebaPdfComponent },
 
     //Formulario del Paciente
     { path: 'formPaciente', component: FormPacienteComponent, 

@@ -1,0 +1,151 @@
+<div class="container">
+    <div class="header">
+        <div class="logo-container">
+            <img [src]="imageLogoOdonto" alt="Logo" class="logo">
+            <h1>Clínica Odontológica Equilibrio dental</h1>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="title">
+        Datos Personales del Paciente
+    </div>
+
+    <div class="content">
+        <div class="datosPersonales row">
+
+            <div class="tablaPaciente col-8">
+                <table class="table">
+                    <tr>
+                        <td><strong>Lugar:</strong> Independencia 922</td>
+                        <td><strong>Fecha:</strong> ----------------</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr>
+                        <td><strong>ODONTÓLOGO:</strong> Nombre Apellido</td>
+                        <td><strong>N° Matrícula:</strong> 00000</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr>
+                        <td><strong>PACIENTE:</strong> -------------------------------------</td>
+                        <td><strong>N° AFIL:</strong> 0000</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr>
+                        <td><strong>O. Social:</strong> ----------------</td>
+                        <td><strong>F. Nac.:</strong> -----------------------------------------</td>
+                        <td><strong>Tel.:</strong> -----------------------------------</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr>
+                        <td><strong>Edad:</strong> <!-- Edad aquí --></td>
+                        <td><strong>Estado Civil:</strong> ----------------------------</td>
+                        <td><strong>Nacionalidad:</strong> -------------------------------------</td>
+                        <td><strong>N° de Doc.:</strong> ---------------------------------------</td>
+                        <td><strong>Cel.:</strong> <!-- Celular aquí --></td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr>
+                        <td><strong>Domicilio:</strong> (calle, num., barrio, localidad) -------</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr>
+                        <td><strong>Profesión/Actividad:</strong> ---------------------------------</td>
+                        <td><strong>Titular:</strong> ---------------------------------------</td>
+                        <td><strong>Lugar de Trabajo:</strong> ----------------------------</td>
+                        <td><strong>Jerarquía:</strong> -------------------------------------</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="imagenPaciente col-4">
+                <img [src]="imageNumero" alt="paciente" class="paciente" width="370px" height="320px">
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="imagenes">
+            <div class="title">
+                Imágenes
+            </div>
+            <div class="row">
+                <div class="filaImagenes col-4" *ngFor="let imagen of imagenes">
+                    <img [src]="imagen" class="img-thumbnail" alt="Imagen del paciente">
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="title">
+            Historía Clinica Médica
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="title">
+            Historía Clínica Odontológica
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="title">
+            <strong>ODONTOGRAMA:</strong>
+        </div>
+    </div>
+</div>

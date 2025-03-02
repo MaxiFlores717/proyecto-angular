@@ -1,0 +1,55 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 22px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-container, .number-container {
+    flex: 1;
+    text-align: center;
+}
+
+.logo {
+    height: 65px;
+    border-radius: 40px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 14px;
+}
+.paciente{
+    border-radius: 15px;
+}
+
+.separator {
+    margin: 20px 0;
+    border-top: 2px solid #000;
+}
+
